@@ -6,7 +6,7 @@
 /*   By: wwan-taj <wwan-taj@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:57:25 by kwang             #+#    #+#             */
-/*   Updated: 2022/09/28 16:10:28 by wwan-taj         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:13:27 by wwan-taj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,4 @@ int main(int argc, char **argv)
 
 
 // just adding a new line here to test git
+// added a second line
