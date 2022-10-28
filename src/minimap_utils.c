@@ -19,7 +19,7 @@ static void	img_generator(t_vars *vars, t_data *tmp, int colour, int side)
 {
 	tmp->img = mlx_new_image(vars->mlx, side, side);
 	tmp->addr = mlx_get_data_addr(tmp->img, &tmp->bpp, &tmp->size_line, &tmp->endian);
-	rectangle_drawer(vars, tmp, side, side, colour);
+	draw_rectangle(vars, tmp, side, side, colour);
 }
 
 /*
@@ -45,7 +45,7 @@ static void	minimap_bg_drawer(t_vars *vars, t_data *mmbg)
 	height = width;
 	mmbg->img = mlx_new_image(vars->mlx, width, height); // adjust the size
 	mmbg->addr = mlx_get_data_addr(mmbg->img, &mmbg->bpp, &mmbg->size_line, &mmbg->endian);
-	rectangle_drawer(vars, mmbg, width, height, 0); // adjust the colour
+	draw_rectangle(vars, mmbg, width, height, 0); // adjust the colour
 }
 
 /*
@@ -71,7 +71,7 @@ static void minimap_player_drawer(t_vars *vars, t_data *mmp)
 	height = width;
 	mmp->img = mlx_new_image(vars->mlx, width, height);
 	mmp->addr = mlx_get_data_addr(mmp->img, &mmp->bpp, &mmp->size_line, &mmp->endian);
-	rectangle_drawer(vars, mmp, width, height, 0x54F2ED); // adjust the colour
+	draw_rectangle(vars, mmp, width, height, 0x54F2ED); // adjust the colour
 }
 
 /*
@@ -97,7 +97,7 @@ static void minimap_obs_drawer(t_vars *vars, t_data *mmo)
 	height = width;
 	mmo->img = mlx_new_image(vars->mlx, width, height);
 	mmo->addr = mlx_get_data_addr(mmo->img, &mmo->bpp, &mmo->size_line, &mmo->endian);
-	rectangle_drawer(vars, mmo, width, height, 0xFFFFF); // adjust the colour
+	draw_rectangle(vars, mmo, width, height, 0xFFFFF); // adjust the colour
 }
 
 /*
