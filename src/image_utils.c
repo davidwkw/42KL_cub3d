@@ -3,25 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   image_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwan-taj <wwan-taj@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:11:41 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/28 13:34:16 by wwan-taj         ###   ########.fr       */
+/*   Updated: 2022/10/28 23:03:09 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
+Parameters:
+mlx - address of mlx pointer returned from mlx_init()
+img - address of the memory where the image is to be cached
+path - relative path to the reference image
+
+Description:
+Uses mlx_xpm_file_to_image to cache an image in xpm format into memory.
+
+Return value:
+Returns nothing
+*/
 void	cache_image(void *mlx, t_data *img, char *path)
 {
-	img->addr = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
-	img->img = mlx_get_data_addr(img->addr, &img->bpp,
+	img->img = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
+	img->addr = mlx_get_data_addr(img->img, &img->bpp,
 			&img->size_line, &img->endian);
 }
 
 /*
 Parameters:
-bg - data t_data sruct of the background image
+mlx - address of mlx pointer returned from mlx_init()
+canvas - address of the image data structure to be populated with new image
+width - dimension of image
+height - dimension of image
+
+Description:
+Uses mlx_new_image to create blank image that is saved into the address 
+of the image data structure passed into it.
+
+Return value:
+Returns nothing
+*/
+void	create_image(void *mlx, t_data *canvas, int width, int height)
+{
+	canvas->img = mlx_new_image(mlx, width, height);
+    canvas->addr = mlx_get_data_addr(canvas->img, &canvas->bpp, &canvas->size_line, &canvas->endian);
+}
+
+/*
+Parameters:
+bg - data t_data struct of the background image
 colour - the colour taken from the config
 
 Description:
