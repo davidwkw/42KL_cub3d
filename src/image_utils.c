@@ -6,7 +6,7 @@
 /*   By: wwan-taj <wwan-taj@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:11:41 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/09 21:53:44 by wwan-taj         ###   ########.fr       */
+/*   Updated: 2022/10/28 13:34:16 by wwan-taj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ static void	floor_drawer(t_data *bg, int colour)
 
 /*
 Paremeters:
+vars - the t_vars struct
 data - the t_data type of an mlx image
 w - the width of the mlx image
 h - height of the mlx image
@@ -102,26 +103,25 @@ Will draw a solid rectangle
 Return value:
 Returns nothing
 */
-void	rectangle_drawer(t_data *data, int w, int h, int colour)
+void    *drawrectangle(t_vars *vars, t_data *d, int width, int height, int colour) // need to refactor this function
 {
-	int i;
-	int j;
-	
-	i = 0;
-	while (i < h)
-	{
-		j = 0;
-		while (j < (w * 4))
-		{
-			data->addr[j + 0] = (colour) & 0xFF;
-			data->addr[j + 1] = (colour >> 8) & 0xFF;
-			data->addr[j + 2] = (colour >> 16) & 0xFF;
-			data->addr[j + 3] = (colour >> 24);
-			j += 4;
-		}
-		data->addr += data->size_line;
-		i++;
-	}
+    d->img = mlx_new_image(vars->mlx, width, height);
+    d->addr = mlx_get_data_addr(d->img, &d->bpp, &d->size_line, &d->endian);
+    int i, j;
+    int *temp;
+    temp = (int *)d->addr;
+    i = 0;
+    while (i < height)
+    {
+        j = 0;
+        while (j < width)
+        {
+            temp[j] = colour;
+            ++j;
+        }
+        temp += (d->size_line / (d->bpp / 8));
+        i++;
+    }
 }
 
 void	init_bg_mlx(t_vars *vars, void *mlx, t_data *bg)

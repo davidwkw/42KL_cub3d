@@ -147,9 +147,9 @@ void	init_player_mlx(t_player *player, char **map);
 // image_utils.c
 void	cache_image(void *mlx, t_data *img, char *path);
 void	init_bg_mlx(t_vars *vars, void *mlx, t_data *bg);
-void	rectangle_drawer(t_data *data, int w, int h, int colour);
+void	rectangle_drawer(t_vars *vars, t_data *data, int w, int h, int colour);
 
 // minimap_utils.c
-void	init_minimap_assets(void *mlx, t_cache *cache);
+void	init_minimap_assets(t_vars *vars, t_cache *cache);
 
 #endif
