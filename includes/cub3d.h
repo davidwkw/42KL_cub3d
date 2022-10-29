@@ -14,6 +14,7 @@
 
 # define WIN_WIDTH 1366
 # define WIN_HEIGHT 768
+# define MINIMAP_SCALE_FACTOR 6
 
 enum e_textures{
 	NORTH = 0,
