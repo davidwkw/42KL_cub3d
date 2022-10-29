@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:11:41 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/28 23:03:09 by kwang            ###   ########.fr       */
+/*   Updated: 2022/10/29 23:55:25 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,79 +45,37 @@ of the image data structure passed into it.
 Return value:
 Returns nothing
 */
-void	create_image(void *mlx, t_data *canvas, int width, int height)
+void	create_image(void *mlx, t_data *img, int width, int height)
 {
-	canvas->img = mlx_new_image(mlx, width, height);
-    canvas->addr = mlx_get_data_addr(canvas->img, &canvas->bpp, &canvas->size_line, &canvas->endian);
+	img->img = mlx_new_image(mlx, width, height);
+	img->width = width;
+	img->height = height;
+    img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->size_line, &img->endian);
 }
 
 /*
 Parameters:
-bg - data t_data struct of the background image
-colour - the colour taken from the config
-
+img_address - address of the image in the form of an int * in which to start
+			  filling with color
+num_pixels - the number of pixels to fill with color. if a char * is passed in,
+the total length of the string NEEDS to be a multiple of 4.
 Description:
-Loops through half of the background image's pixels and sets each pixel's colour
-to the colour passed in as parameter
+Function will assign the colour value to the given address until the number of 
+pixels is reached.
 
 Return value:
 Returns nothing
 */
-static void	ceiling_drawer(t_data *bg, int colour)
+void	fill_image_with_color(int *img_addr, int num_pixels, int colour)
 {
 	int	i;
-	int	j;
-	int	horizon;
 
 	i = 0;
-	horizon = WIN_HEIGHT / 2;
-	while (i < horizon)
+	printf("%d\n", num_pixels);
+	while (i < num_pixels)
 	{
-		j = 0;
-		while (j < WIN_WIDTH * 4)
-		{
-			bg->addr[j + 0] = (colour) & 0xFF;
-			bg->addr[j + 1] = (colour >> 8) & 0xFF;
-			bg->addr[j + 2] = (colour >> 16) & 0xFF;
-			bg->addr[j + 3] = (colour >> 24);
-			j+= 4;
-		}
-		bg->addr += bg->size_line;
-		i++;
-	}
-}
-
-/*
-Parameters:
-bg - data t_data sruct of the background image
-colour - the colour taken from the config
-
-Description:
-Loops through half of the background image's pixels and sets each pixel's colour
-to the colour passed in as parameter
-
-Return value:
-Returns nothing
-*/
-static void	floor_drawer(t_data *bg, int colour)
-{
-	int	i;
-	int	j;
-
-	i = WIN_HEIGHT / 2;
-	while (i < WIN_HEIGHT)
-	{
-		j = 0;
-		while (j < WIN_WIDTH * 4)
-		{
-			bg->addr[j + 0] = (colour) & 0xFF;
-			bg->addr[j + 1] = (colour >> 8) & 0xFF;
-			bg->addr[j + 2] = (colour >> 16) & 0xFF;
-			bg->addr[j + 3] = (colour >> 24);
-			j+= 4;
-		}
-		bg->addr += bg->size_line;
-		i++;
+		img_addr[i] = colour;
+		++i;
 	}
 }
 
@@ -135,7 +93,7 @@ Will draw a solid rectangle
 Return value:
 Returns nothing
 */
-void    *drawrectangle(t_vars *vars, t_data *d, int width, int height, int colour) // need to refactor this function
+void    *draw_rectangle(t_vars *vars, t_data *d, int width, int height, int colour) // need to refactor this function
 {
     d->img = mlx_new_image(vars->mlx, width, height);
     d->addr = mlx_get_data_addr(d->img, &d->bpp, &d->size_line, &d->endian);
@@ -158,8 +116,11 @@ void    *drawrectangle(t_vars *vars, t_data *d, int width, int height, int colou
 
 void	init_bg_mlx(t_vars *vars, void *mlx, t_data *bg)
 {
-	bg->img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
-	bg->addr = mlx_get_data_addr(bg->img, &bg->bpp, &bg->size_line, &bg->endian);
-	ceiling_drawer(bg, vars->colours.bg.ceiling);
-	floor_drawer(bg, vars->colours.bg.floor);
+	create_image(mlx, bg, WIN_WIDTH, WIN_HEIGHT);
+	fill_image_with_color((int *)bg->addr,
+						bg->width*bg->height/2, 
+						vars->colours.bg.ceiling);
+	fill_image_with_color((int *)bg->addr+(bg->width*bg->height/2),
+						bg->width*bg->height/2, 
+						vars->colours.bg.floor);
 }
