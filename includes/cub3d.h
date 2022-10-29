@@ -159,6 +159,6 @@ void	fill_image_with_color(int *img_addr, int num_pixels, int colour);
 void    *draw_rectangle(t_vars *vars, t_data *d, int width, int height, int colour);
 
 // minimap_initializer.c
-void	init_minimap_assets(t_vars *vars, t_cache *cache);
+void	cache_minimap_assets(t_vars *vars, t_cache *cache);
 
 #endif

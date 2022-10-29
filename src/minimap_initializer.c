@@ -112,9 +112,14 @@ to be initialized and drawn
 Return value:
 Returns nothing
 */
-void	init_minimap_assets(t_vars *vars, t_cache *cache)
+void	cache_minimap_assets(t_vars *vars, t_cache *cache)
 {
-	minimap_bg_drawer(vars->mlx, &cache->minimap_bg);
+	create_image(vars->mlx, &cache->minimap_bg,
+				WIN_HEIGHT/MINIMAP_SCALE, WIN_HEIGHT/MINIMAP_SCALE);
+	fill_image_with_color((int *)cache->minimap_bg.addr,
+						cache->minimap_bg.width*cache->minimap_bg.height,
+						BLACK);
+	// minimap_bg_drawer(vars->mlx, &cache->minimap_bg);
 	// img_generator(vars, &cache->minimap_bg, WIN_WIDTH / 6, 0);
 	// img_generator(vars, &cache->minimap_player, 10, 0x54F2ED);
 	// img_generator(vars, &cache->minimap_obs, 23, 0xFFFFF);

@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/30 00:16:54 by kwang            ###   ########.fr       */
+/*   Updated: 2022/10/30 00:37:50 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ void	handle_mlx(t_config *config)
 		config->assets.textures, TEXTURES_SIZE);
 	init_bg_mlx(&vars, vars.mlx, &vars.texture_cache.bg);
 	init_player_mlx(&vars.player, vars.map);
-	init_minimap_assets(&vars, &vars.texture_cache);
+	cache_minimap_assets(&vars, &vars.texture_cache);
 	vars.win = mlx_new_window(vars.mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	mlx_hook(vars.win, 17, 0, exit_program_mlx, &vars);
 	mlx_key_hook(vars.win, key_handler, &vars);
 	mlx_loop_hook(vars.mlx, screen_renderer, &vars);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.texture_cache.bg.img, 0, 0);
-	mlx_put_image_to_window(vars.mlx, vars.win, vars.texture_cache.minimap_bg.img, 1139, 0);
+	mlx_put_image_to_window(vars.mlx, vars.win, vars.texture_cache.minimap_bg.img, WIN_WIDTH-vars.texture_cache.minimap_bg.width, 0);
 	// mlx_put_image_to_window(vars.mlx, vars.win, vars.texture_cache.minimap_obs.img, 1150, 100);
 	// mlx_put_image_to_window(vars.mlx, vars.win, vars.texture_cache.minimap_player.img, 1252, 113);
 	mlx_loop(vars.mlx);
