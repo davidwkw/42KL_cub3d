@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wwan-taj <wwan-taj@student.42kl.edu.my>    +#+  +:+       +#+         #
+#    By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:03:19 by kwang             #+#    #+#              #
-#    Updated: 2022/10/09 21:46:35 by wwan-taj         ###   ########.fr        #
+#    Updated: 2022/10/30 00:16:31 by kwang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC_FILES =		main.c \
 				image_utils.c \
 				map_validator.c \
 				map_validator_utils.c \
-				minimap_utils.c \
+				minimap_initializer.c \
 
 OBJ_DIR = obj/
 
