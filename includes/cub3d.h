@@ -14,7 +14,7 @@
 
 # define WIN_WIDTH 1366
 # define WIN_HEIGHT 768
-# define MINIMAP_SCALE_FACTOR 6
+# define MINIMAP_SCALE 6
 
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
