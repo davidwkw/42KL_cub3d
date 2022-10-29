@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:40:08 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/29 23:57:56 by kwang            ###   ########.fr       */
+/*   Updated: 2022/10/30 00:02:17 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,15 @@ void	init_player_mlx(t_player *player, char **map)
 		}
 		++y;
 	}
+}
+
+void	init_bg_mlx(t_vars *vars, void *mlx, t_data *bg)
+{
+	create_image(mlx, bg, WIN_WIDTH, WIN_HEIGHT);
+	fill_image_with_color((int *)bg->addr,
+						bg->width*bg->height/2, 
+						vars->colours.bg.ceiling);
+	fill_image_with_color((int *)bg->addr+(bg->width*bg->height/2),
+						bg->width*bg->height/2, 
+						vars->colours.bg.floor);
 }
