@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:11:41 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/30 00:02:06 by kwang            ###   ########.fr       */
+/*   Updated: 2022/10/30 00:27:40 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	fill_image_with_color(int *img_addr, int num_pixels, int colour)
 	int	i;
 
 	i = 0;
-	printf("%d\n", num_pixels);
 	while (i < num_pixels)
 	{
 		img_addr[i] = colour;
