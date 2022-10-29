@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:11:41 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/29 23:55:25 by kwang            ###   ########.fr       */
+/*   Updated: 2022/10/29 23:57:56 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Uses mlx_xpm_file_to_image to cache an image in xpm format into memory.
 Return value:
 Returns nothing
 */
-void	cache_image(void *mlx, t_data *img, char *path)
+void	cache_image_from_xpm(void *mlx, t_data *img, char *path)
 {
 	img->img = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp,

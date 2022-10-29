@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:40:08 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/07 14:02:18 by kwang            ###   ########.fr       */
+/*   Updated: 2022/10/29 23:57:56 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char *textures[], size_t size)
 	i = 0;
 	while (i < size)
 	{
-		cache_image(p_mlx, &texture_cache->textures[i], textures[i]);
+		cache_image_from_xpm(p_mlx, &texture_cache->textures[i], textures[i]);
 		++i;
 	}
 }

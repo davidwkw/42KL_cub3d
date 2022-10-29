@@ -145,9 +145,11 @@ void	init_colours_mlx(t_colours *colours_cache,
 void	init_player_mlx(t_player *player, char **map);
 
 // image_utils.c
-void	cache_image(void *mlx, t_data *img, char *path);
+void	cache_image_from_xpm(void *mlx, t_data *img, char *path);
+void	create_image(void *mlx, t_data *img, int width, int height);
+void	fill_image_with_color(int *img_addr, int num_pixels, int colour);
 void	init_bg_mlx(t_vars *vars, void *mlx, t_data *bg);
-void	draw_rectangle(t_vars *vars, t_data *data, int w, int h, int colour);
+void    *draw_rectangle(t_vars *vars, t_data *d, int width, int height, int colour);
 
 // minimap_utils.c
 void	init_minimap_assets(t_vars *vars, t_cache *cache);
