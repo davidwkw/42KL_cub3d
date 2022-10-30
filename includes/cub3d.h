@@ -16,6 +16,8 @@
 # define WIN_HEIGHT 768
 # define MINIMAP_SCALE 4
 # define MINIMAP_SIZE WIN_HEIGHT/MINIMAP_SCALE
+# define MINIMAP_X_OFFSET WIN_WIDTH-(WIN_HEIGHT/MINIMAP_SCALE)
+# define MINIMAP_Y_OFFSET 0
 
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
@@ -160,6 +162,6 @@ void	fill_image_with_color(int *img_addr, int num_pixels, int colour);
 void    *draw_rectangle(t_vars *vars, t_data *d, int width, int height, int colour);
 
 // minimap_initializer.c
-void	cache_minimap_assets(t_vars *vars, t_cache *cache);
+void	cache_minimap_assets(void *vars, t_cache *cache);
 
 #endif
