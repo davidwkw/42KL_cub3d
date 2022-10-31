@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/30 14:20:05 by kwang            ###   ########.fr       */
+/*   Updated: 2022/10/31 22:59:31 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Description:
 Return value:
 
 */
-int	key_handler(int key, t_vars *mlx)
+int	handle_keys(int key, t_vars *mlx)
 {
 	if (key == 65307 || key == 53)
 	{
@@ -38,8 +38,10 @@ Description:
 Return value:
 
 */
-int	screen_renderer(t_vars *vars)
+int	render_screen(t_vars *vars)
 {
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->texture_cache.bg.img, 0, 0);
+	// mlx_put_image_to_window(vars.mlx, vars.win, vars.texture_cache.minimap.img, MINIMAP_X_OFFSET, MINIMAP_Y_OFFSET);
 	return(EXIT_SUCCESS);
 }
 
@@ -67,14 +69,10 @@ void	handle_mlx(t_config *config)
 		config->assets.textures, TEXTURES_SIZE);
 	init_bg_mlx(&vars, vars.mlx, &vars.texture_cache.bg);
 	init_player_mlx(&vars.player, vars.map);
-	cache_minimap_assets(&vars, &vars.texture_cache);
+	cache_minimap_assets(vars.mlx, &vars.texture_cache);
 	vars.win = mlx_new_window(vars.mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	mlx_hook(vars.win, 17, 0, exit_program_mlx, &vars);
-	mlx_key_hook(vars.win, key_handler, &vars);
-	mlx_loop_hook(vars.mlx, screen_renderer, &vars);
-	mlx_put_image_to_window(vars.mlx, vars.win, vars.texture_cache.bg.img, 0, 0);
-	mlx_put_image_to_window(vars.mlx, vars.win, vars.texture_cache.minimap_bg.img, MINIMAP_X_OFFSET, MINIMAP_Y_OFFSET);
-	// mlx_put_image_to_window(vars.mlx, vars.win, vars.texture_cache.minimap_obs.img, 1150, 100);
-	// mlx_put_image_to_window(vars.mlx, vars.win, vars.texture_cache.minimap_player.img, 1252, 113);
+	mlx_key_hook(vars.win, handle_keys, &vars);
+	mlx_loop_hook(vars.mlx, render_screen, &vars);
 	mlx_loop(vars.mlx);
 }
