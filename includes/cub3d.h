@@ -31,6 +31,8 @@
 # define BLUE 0x000000FF
 # define TRANSPARENT 0xFF000000
 
+# define MOVE_SPEED 4
+
 enum e_textures{
 	NORTH = 0,
 	SOUTH,
@@ -172,5 +174,8 @@ void    *draw_rectangle(t_vars *vars, t_data *d, int width, int height, int colo
 
 // minimap_initializer.c
 void	cache_minimap_assets(void *vars, t_cache *cache);
+
+// player_utils.c
+void	init_player_var(t_player *player, char **map, int x, int y);
 
 #endif
