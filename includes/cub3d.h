@@ -29,6 +29,7 @@
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
+# define TRANSPARENT 0xFF000000
 
 enum e_textures{
 	NORTH = 0,
@@ -75,7 +76,7 @@ typedef struct s_cache
 		t_data	textures[TEXTURES_SIZE];
 	};
 	t_data	bg;
-	t_data	minimap_bg;
+	t_data	minimap;
 	t_data	minimap_obs;
 	t_data	minimap_player;
 }	t_cache;
@@ -106,6 +107,9 @@ typedef struct s_player
 		float	x;
 		float	y;
 	}	coords;
+	float	pa;
+	float	pdx;
+	float	pdy;
 }	t_player;
 
 typedef struct s_vars
