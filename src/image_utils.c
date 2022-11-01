@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:11:41 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/30 00:28:10 by kwang            ###   ########.fr       */
+/*   Updated: 2022/11/01 17:22:34 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,36 +79,38 @@ void	fill_image_with_color(int *img_addr, int num_pixels, int colour)
 }
 
 /*
-Paremeters:
-vars - the t_vars struct
-data - the t_data type of an mlx image
-w - the width of the mlx image
-h - height of the mlx image
-colour - the colour to set the image to
-
+Parameters:
+dst - destination image data structure to copy to.
+src - source image data structure to copy from.
+x - x coordinate on the destination address to begin copying to.
+y - y coordinate on the destination address to begin copying to.
 Description:
-Will draw a solid rectangle
+Function will assign the colour value to the given address until the number of 
+pixels is reached.
 
 Return value:
 Returns nothing
+
+*Note: Could use ft_memcpy on line 112.
 */
-void    *draw_rectangle(t_vars *vars, t_data *d, int width, int height, int colour) // need to refactor this function
+void	copy_img(t_data *dst, t_data *src, int x, int y)
 {
-    d->img = mlx_new_image(vars->mlx, width, height);
-    d->addr = mlx_get_data_addr(d->img, &d->bpp, &d->size_line, &d->endian);
-    int i, j;
-    int *temp;
-    temp = (int *)d->addr;
-    i = 0;
-    while (i < height)
-    {
-        j = 0;
-        while (j < width)
-        {
-            temp[j] = colour;
-            ++j;
-        }
-        temp += (d->size_line / (d->bpp / 8));
-        i++;
-    }
+	int		i;
+	int		j;
+	char	*temp_dst;
+	char	*temp_src;
+
+	if (dst == NULL || src == NULL)
+		return ;
+	temp_dst = dst->addr;
+	temp_src = src->addr;
+	i = -1;
+	while (++i < src->height && y + i < dst->height)
+	{
+		j = -1;
+		while (++j < src->width && x + j < dst->width)
+			temp_dst[x+j] = temp_src[j];
+		temp_dst += dst->size_line;
+		temp_src += src->size_line;
+	}
 }

@@ -16,14 +16,15 @@
 # define WIN_WIDTH 1366
 # define WIN_HEIGHT 768
 
+# define GRID_SIZE 64
+
 # define MINIMAP_SCALE 4
 # define MINIMAP_SIZE WIN_HEIGHT/MINIMAP_SCALE
+# define MINIMAP_GRID_SIZE MINIMAP_SIZE/8
 # define MINIMAP_X_OFFSET WIN_WIDTH-(WIN_HEIGHT/MINIMAP_SCALE)
 # define MINIMAP_Y_OFFSET 0
-# define MINIMAP_OBS_SIZE MINIMAP_SIZE/8
+# define MINIMAP_OBS_SIZE MINIMAP_GRID_SIZE
 # define MINIMAP_PLYR_SIZE MINIMAP_SIZE/16
-
-# define GRID_SIZE 64
 
 # define WHITE 0x00FFFFFF
 # define BLACK 0x00000000
@@ -178,7 +179,7 @@ void	init_bg_mlx(t_vars *vars, void *mlx, t_data *bg);
 void	cache_image_from_xpm(void *mlx, t_data *img, char *path);
 void	create_image(void *mlx, t_data *img, int width, int height);
 void	fill_image_with_color(int *img_addr, int num_pixels, int colour);
-void    *draw_rectangle(t_vars *vars, t_data *d, int width, int height, int colour);
+void	copy_img(t_data *dst, t_data *src, int x, int y);
 
 // minimap_initializer.c
 void	cache_minimap_assets(void *vars, t_cache *cache);
