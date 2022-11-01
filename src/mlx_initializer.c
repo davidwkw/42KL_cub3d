@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:40:08 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/31 19:45:09 by kwang            ###   ########.fr       */
+/*   Updated: 2022/11/01 22:16:57 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,7 @@ void	init_colours_mlx(t_colours *colours_cache, char *colours[], size_t size)
 /*
 Parameters:
 player - Address of player structure
-map - Loops through map to find player position and
-	sets the respective coordinate in player structure
+map - Loops through map to find player position and initialize player variable
 
 Description:
 Loops through map to find player position and
@@ -93,7 +92,7 @@ void	init_player_mlx(t_player *player, char **map)
 		while (map[y][x] != '\0')
 		{
 			if (ft_strchr("NSEW" , map[y][x]) != NULL)
-				init_player_var(player, map, x, y);
+				init_player_var(player, map[y][x], x, y);
 			++x;
 		}
 		++y;

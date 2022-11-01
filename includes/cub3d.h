@@ -185,6 +185,8 @@ void	copy_img(t_data *dst, t_data *src, int x, int y);
 void	cache_minimap_assets(void *vars, t_cache *cache);
 
 // player_utils.c
-void	init_player_var(t_player *player, char **map, int x, int y);
+void	init_player_var(t_player *player, char orientation, int x, int y);
+void	handle_player_movement(int key, t_player *player);
+float	calc_radial_dx_dy(float rad_angle, float *dx, float *dy);
 
 #endif

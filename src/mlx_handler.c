@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/11/01 13:17:54 by kwang            ###   ########.fr       */
+/*   Updated: 2022/11/01 22:25:53 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ Description:
 Return value:
 
 */
-int	handle_keys(int key, t_vars *mlx)
+int	handle_keys(int key, t_vars *vars)
 {
+	printf("%d\n", key);
+	if (ft_strchr("WASD", key) != NULL || (key >= 0 && key <= 2) || key == 13)
+		handle_player_movement(key, &vars->player);
 	if (key == 65307 || key == 53)
 	{
 		printf("Quitting programme\n");
-		exit_program_mlx(mlx);
+		exit_program_mlx(vars);
 	}
 	return (EXIT_SUCCESS);
 }
