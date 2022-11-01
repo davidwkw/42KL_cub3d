@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:57:22 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/06 15:02:50 by kwang            ###   ########.fr       */
+/*   Updated: 2022/11/01 13:19:27 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,20 +135,20 @@ variable to be used by game logic.
 Return value:
 Returns nothing.
 */
-static void	cache_map(char ***map, char **map_config)
+static void	cache_map(t_map *map, char **map_config)
 {
 	size_t	i;
 	char	*map_end;
 
 	i = 0;
-	*map = malloc(sizeof(char *) * (ft_2darrlen(map_config) + 1));
+	map->map = malloc(sizeof(char *) * (ft_2darrlen(map_config) + 1));
 	while (map_config[i] != NULL)
 	{
 		map_end = ft_strrchr(map_config[i], '1');
-		(*map)[i] = ft_substr(map_config[i], 0, map_end - map_config[i] + 1);
+		map->map[i] = ft_substr(map_config[i], 0, map_end - map_config[i] + 1);
 		++i;
 	}
-	(*map)[i] = NULL;
+	map->map[i] = NULL;
 }
 
 /*

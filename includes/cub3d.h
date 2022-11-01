@@ -96,10 +96,17 @@ typedef struct s_colours
 	}	bg;
 }	t_colours;
 
+typedef struct s_map
+{
+	char	**map;
+	int		length;
+	int		width;
+}	t_map;
+
 typedef struct s_config
 {
 	t_assets	assets;
-	char		**map;
+	t_map		map;
 }	t_config;
 
 typedef struct s_player
@@ -114,13 +121,6 @@ typedef struct s_player
 	float	pdy;
 }	t_player;
 
-typedef struct s_map
-{
-	char	**map;
-	int		length;
-	int		width;
-}	t_map;
-
 typedef struct s_vars
 {
 	void		*mlx;
@@ -128,7 +128,7 @@ typedef struct s_vars
 	t_cache		texture_cache;
 	t_colours	colours;
 	t_player	player;
-	char		**map;
+	t_map		map;
 }	t_vars;
 
 // error_handler.c
@@ -157,7 +157,7 @@ void	copy_into_temp(char **dst, char **src, int len);
 int		get_longest_line(char **config_cache);
 
 // map_validator.c
-void	validate_map(char **config_cache);
+void	validate_map(char **map_cache);
 
 // mlx_handler.c
 void	handle_mlx(t_config *config);

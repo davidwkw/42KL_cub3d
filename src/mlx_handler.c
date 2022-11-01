@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/31 22:59:31 by kwang            ###   ########.fr       */
+/*   Updated: 2022/11/01 13:17:54 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	handle_mlx(t_config *config)
 	init_config_textures_mlx(vars.mlx, &vars.texture_cache,
 		config->assets.textures, TEXTURES_SIZE);
 	init_bg_mlx(&vars, vars.mlx, &vars.texture_cache.bg);
-	init_player_mlx(&vars.player, vars.map);
+	init_player_mlx(&vars.player, vars.map.map);
 	cache_minimap_assets(vars.mlx, &vars.texture_cache);
 	vars.win = mlx_new_window(vars.mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	mlx_hook(vars.win, 17, 0, exit_program_mlx, &vars);
