@@ -80,12 +80,13 @@ j - The index of the character in the row
 
 Description:
 Will check all 8 elements surrounding the element at index i, j
-and see if there's a space character.
+and see if there's a space character. Intended to checks if the player is
+outside the enclosed map boundary
 
 Return value:
 Returns false if found an invalid character. Returns true otherwise.
 */
-static int	check_ply_position(char **map, int i, int j)
+static int	check_plyr_oob(char **map, int i, int j)
 {
 	int	row_limit;
 
@@ -129,7 +130,7 @@ static	int	check_duplicates(char **map)
 		{
 			if (ft_strchr("NSWE", map[i][j]) != NULL)
 			{
-				if (check_ply_position(map, i, j) == false)
+				if (check_plyr_oob(map, i, j) == false)
 					return (false);
 				count++;
 			}
