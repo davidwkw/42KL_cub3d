@@ -9,6 +9,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <math.h>
+# include <limits.h>
 # include "mlx.h"
 # include "libft.h"
 
