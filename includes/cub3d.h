@@ -114,6 +114,13 @@ typedef struct s_player
 	float	pdy;
 }	t_player;
 
+typedef struct s_map
+{
+	char	**map;
+	int		length;
+	int		width;
+}	t_map;
+
 typedef struct s_vars
 {
 	void		*mlx;
