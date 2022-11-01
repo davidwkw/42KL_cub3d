@@ -152,16 +152,16 @@ Constructs a temporary rectangular map padded with spaces to validate.
 Return value:
 Returns nothing.
 */
-void	validate_map(char **config_cache)
+void	validate_map(char **map_cache)
 {
 	char	**temp_arr;
 	int		longest;
 
-	longest = get_longest_line(config_cache);
-	temp_arr = malloc(sizeof(char *) * (ft_2darrlen(config_cache) + 1));
-	temp_arr[ft_2darrlen(config_cache)] = NULL;
-	fill_space(temp_arr, ft_2darrlen(config_cache), longest);
-	copy_into_temp(temp_arr, config_cache, longest);
+	longest = get_longest_line(map_cache);
+	temp_arr = malloc(sizeof(char *) * (ft_2darrlen(map_cache) + 1));
+	temp_arr[ft_2darrlen(map_cache)] = NULL;
+	fill_space(temp_arr, ft_2darrlen(map_cache), longest);
+	copy_into_temp(temp_arr, map_cache, longest);
 	if (check_duplicates(temp_arr) == 0)
 		error_handler("Player position is not 1", "validate_map", EIO);
 	if (check_map(temp_arr) == false)
