@@ -15,8 +15,8 @@ Returns nothing.
 */
 void	init_player_var(t_player *player, char orientation, int x, int y)
 {
-	player->coords.x = x;
-	player->coords.y = y;
+	player->px = x;
+	player->py = y;
 	if (orientation == 'E')
 		player->pa = M_PI;
 	else if (orientation == 'N')
@@ -70,13 +70,13 @@ void	handle_player_movement(int key, t_player *player)
 {
 	if (key == 'w' || key == 13)
 	{
-		player->coords.y += (player->pdy * MOVE_SPEED);
-		player->coords.x += (player->pdx * MOVE_SPEED);
+		player->py += (player->pdy * MOVE_SPEED);
+		player->px += (player->pdx * MOVE_SPEED);
 	}
 	else if (key == 's' || key == 1)
 	{
-		player->coords.y -= (player->pdy * MOVE_SPEED);
-		player->coords.x -= (player->pdx * MOVE_SPEED);
+		player->py -= (player->pdy * MOVE_SPEED);
+		player->px -= (player->pdx * MOVE_SPEED);
 	}
 	else if (key == 'a' || key == 0)
 		player->pa = calc_radial_dx_dy(player->pa - 0.1,

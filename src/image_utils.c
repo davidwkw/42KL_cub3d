@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:11:41 by kwang             #+#    #+#             */
-/*   Updated: 2022/11/01 17:22:34 by kwang            ###   ########.fr       */
+/*   Updated: 2022/11/10 20:11:08 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@ void	fill_image_with_color(int *img_addr, int num_pixels, int colour)
 	}
 }
 
+static int	get_offset(int val)
+{
+	if (val < 0)
+		return (ft_absolute(val));
+	else
+		return (0);
+}
+
 /*
 Parameters:
 dst - destination image data structure to copy to.
@@ -95,22 +103,28 @@ Returns nothing
 */
 void	copy_img(t_data *dst, t_data *src, int x, int y)
 {
-	int		i;
-	int		j;
-	char	*temp_dst;
-	char	*temp_src;
+	int		h;
+	int		w;
+	int		*temp_dst;
+	int		*temp_src;
 
 	if (dst == NULL || src == NULL)
 		return ;
-	temp_dst = dst->addr;
-	temp_src = src->addr;
-	i = -1;
-	while (++i < src->height && y + i < dst->height)
+	temp_dst = (int *)dst->addr;
+	temp_src = (int *)src->addr;
+	h = get_offset(y);
+	while (h < src->height && (y + h) < dst->height)
 	{
-		j = -1;
-		while (++j < src->width && x + j < dst->width)
-			temp_dst[x+j] = temp_src[j];
-		temp_dst += dst->size_line;
-		temp_src += src->size_line;
+		w = get_offset(x);
+		while (w < src->width && (x + w) < dst->width)
+		{
+			// temp_dst[x+w] = temp_src[w];
+			temp_dst[((y + h) * (dst->size_line / (dst->bpp / 8))) + (x + w)]
+					= temp_src[(h * (src->size_line / (src->bpp / 8))) + w];
+			++w;
+		}
+		// temp_dst += (dst->size_line/(dst->bpp/8));
+		// temp_src += (src->size_line/(src->bpp/8));
+		++h;
 	}
 }

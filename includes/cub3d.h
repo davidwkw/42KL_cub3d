@@ -101,7 +101,7 @@ typedef struct s_colours
 typedef struct s_map
 {
 	char	**map;
-	int		length;
+	int		height;
 	int		width;
 }	t_map;
 
@@ -113,11 +113,8 @@ typedef struct s_config
 
 typedef struct s_player
 {
-	struct 
-	{
-		float	x;
-		float	y;
-	}	coords;
+	float	px;
+	float	py;
 	float	pa;
 	float	pdx;
 	float	pdy;
@@ -183,6 +180,7 @@ void	copy_img(t_data *dst, t_data *src, int x, int y);
 
 // minimap_initializer.c
 void	cache_minimap_assets(void *vars, t_cache *cache);
+void	cache_minimap(t_map map, void *mlx, t_cache *cache);
 
 // player_utils.c
 void	init_player_var(t_player *player, char orientation, int x, int y);

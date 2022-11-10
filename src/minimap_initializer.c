@@ -30,7 +30,7 @@ void	cache_minimap_assets(void *mlx, t_cache *cache)
 				MINIMAP_PLYR_SIZE, MINIMAP_PLYR_SIZE);
 	fill_image_with_color((int *)cache->minimap_player.addr,
 						cache->minimap_player.width*cache->minimap_player.height,
-						BLUE);
+						GREEN);
 }
 
 /*
@@ -53,20 +53,21 @@ void	cache_minimap(t_map map, void *mlx, t_cache *cache)
 	t_data *asset;
 
 	create_image(mlx, &cache->minimap,
-				map.width*MINIMAP_GRID_SIZE, map.length*MINIMAP_GRID_SIZE);
+				map.width*MINIMAP_GRID_SIZE, map.height*MINIMAP_GRID_SIZE);
 	fill_image_with_color((int *)cache->minimap.addr,
 						cache->minimap.width*cache->minimap.height,
-						BLACK);
-	y = -1;
-	while (map.map[++y])
+						BLUE);
+	y = 0;
+	while (map.map[y] != NULL)
 	{
-		x = -1;
-		while (map.map[y][++x])
+		x = 0;
+		while (map.map[y][x] != '\0')
 		{
-			asset = get_minimap_asset(cache, map.map[y][++x]);
-			if (asset != NULL)
-				copy_img(&cache->minimap, asset,
-						x*MINIMAP_GRID_SIZE, y*MINIMAP_GRID_SIZE);	
+			asset = get_minimap_asset(cache, map.map[y][x]);
+			copy_img(&cache->minimap, asset,
+					x*MINIMAP_GRID_SIZE, y*MINIMAP_GRID_SIZE);	
+			++x;
 		}
+		++y;
 	}
 }
