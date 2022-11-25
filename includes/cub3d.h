@@ -34,6 +34,7 @@
 # define TRANSPARENT 0xFF000000
 
 # define MOVE_SPEED 4
+# define FOV 66.0
 
 enum e_textures{
 	NORTH = 0,
@@ -111,13 +112,22 @@ typedef struct s_config
 	t_map		map;
 }	t_config;
 
+typedef struct s_vector
+{
+	double	x;
+	double	y;
+}	t_vector;
+
 typedef struct s_player
 {
-	float	px;
-	float	py;
-	float	pa;
-	float	pdx;
-	float	pdy;
+	double		px;
+	double		py;
+	t_vector	dir_vector;
+	t_vector	cam_vector;
+	double		dist_to_x;
+	double		dist_to_y;
+	double		pdx;
+	double		pdy;
 }	t_player;
 
 typedef struct s_vars
@@ -185,6 +195,8 @@ void	cache_minimap(t_map map, void *mlx, t_cache *cache);
 // player_utils.c
 void	init_player_var(t_player *player, char orientation, int x, int y);
 void	handle_player_movement(int key, t_player *player);
-float	calc_radial_dx_dy(float rad_angle, float *dx, float *dy);
+
+// vect_utils.c
+t_vector	add_vectors(t_vector a, t_vector b);
 
 #endif
