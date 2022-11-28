@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/11/10 20:39:57 by kwang            ###   ########.fr       */
+/*   Updated: 2022/11/28 12:59:58 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,14 @@ Return value:
 */
 int	render_screen(t_vars *vars)
 {
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->texture_cache.bg.img, 0, 0);
+	t_data	screen;
+
+	create_image(vars->mlx, &screen, WIN_WIDTH, WIN_HEIGHT);
+	init_bg_mlx(vars, vars->mlx, &screen);
+	// mlx_put_image_to_window(vars->mlx, vars->win, vars->texture_cache.bg.img, 0, 0);
+	mlx_put_image_to_window(vars->mlx, vars->win, screen.img, 0, 0);
 	render_minimap(vars);
+	mlx_destroy_image(vars->mlx, screen.img);
 	return(EXIT_SUCCESS);
 }
 
@@ -92,7 +98,6 @@ void	handle_mlx(t_config *config)
 	init_colours_mlx(&vars.colours, config->assets.colours, COLOURS_SIZE);
 	init_config_textures_mlx(vars.mlx, &vars.texture_cache,
 		config->assets.textures, TEXTURES_SIZE);
-	init_bg_mlx(&vars, vars.mlx, &vars.texture_cache.bg);
 	init_player_mlx(&vars.player, vars.map.map);
 	cache_minimap_assets(vars.mlx, &vars.texture_cache);
 	cache_minimap(vars.map, vars.mlx, &vars.texture_cache);

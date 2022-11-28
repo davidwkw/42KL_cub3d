@@ -8,3 +8,12 @@ t_vector add_vectors(t_vector a, t_vector b)
 	ret.y = a.y + b.y;
 	return (ret);
 }
+
+t_vector multiply_with_vector(t_vector vect, double multiple)
+{
+	t_vector ret;
+
+	ret.x = vect.x * multiple;
+	ret.y = vect.y * multiple;
+	return (ret);
+}

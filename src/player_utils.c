@@ -1,5 +1,6 @@
 #include "cub3d.h"
 
+// to refactor so that it takes into account player vector x/y rather than char.
 static void set_camera_plane(char dir, t_vector *cam_vector, double fov)
 {
 	fov /= 2;

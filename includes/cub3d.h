@@ -80,7 +80,6 @@ typedef struct s_cache
 		};
 		t_data	textures[TEXTURES_SIZE];
 	};
-	t_data	bg;
 	t_data	minimap;
 	t_data	minimap_obs;
 	t_data	minimap_player;
@@ -198,5 +197,6 @@ void	handle_player_movement(int key, t_player *player);
 
 // vect_utils.c
 t_vector	add_vectors(t_vector a, t_vector b);
+t_vector	multiply_with_vector(t_vector vect, double multiple);
 
 #endif

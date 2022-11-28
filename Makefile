@@ -6,7 +6,7 @@
 #    By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:03:19 by kwang             #+#    #+#              #
-#    Updated: 2022/11/26 01:00:14 by kwang            ###   ########.fr        #
+#    Updated: 2022/11/28 08:35:49 by kwang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC_FILES =		main.c \
 				map_validator_utils.c \
 				minimap_initializer.c \
 				player_utils.c \
-				vect_utils.c 
+				vect_utils.c \
+				ray_tracing.c
 
 OBJ_DIR = obj/
 
