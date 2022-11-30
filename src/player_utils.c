@@ -71,6 +71,36 @@ void	init_player_var(t_player *player, char orientation, int x, int y)
 	set_camera_plane(orientation, &player->cam_vector, FOV);
 }
 
+static void handle_forw_back(char key, t_player *p, t_map map)
+{
+	if (key == 'w' || key == 13)
+	{
+		if (map.map[(int)(p->py + p->dir_vector.y * MOVE_SPEED)][(int)p->py] != '1')
+			p->py += p->dir_vector.y * MOVE_SPEED;
+		if (map.map[(int)p->py][(int)(p->px  + p->dir_vector.x * MOVE_SPEED)] != '1')
+			p->px += p->dir_vector.x * MOVE_SPEED;
+	}
+	else if (key == 's' || key == 1)
+	{
+		if (map.map[(int)(p->py - p->dir_vector.y * MOVE_SPEED)][(int)p->py] != '1')
+			p->py -= p->dir_vector.y * MOVE_SPEED;
+		if (map.map[(int)p->py][(int)(p->px  - p->dir_vector.x * MOVE_SPEED)] != '1')
+			p->px -= p->dir_vector.x * MOVE_SPEED;
+	}
+}
+
+static void	handle_rotation(char key, t_player *p)
+{
+	if (key == 'a' || key == 0)
+	{
+
+	}
+	else if (key == 'd' || key == 2)
+	{
+
+	}
+}
+
 /*
 Parameters:
 key - Keycode of button pressed
@@ -82,16 +112,10 @@ Handles WASD movement keys on mac and linux for player movement
 Return value:
 Returns nothing.
 */
-void	handle_player_movement(int key, t_player *player)
+void	handle_player_movement(int key, t_player *p, t_map map)
 {
-	if (key == 'w' || key == 13)
-	{
-		player->py += (player->pdy * MOVE_SPEED);
-		player->px += (player->pdx * MOVE_SPEED);
-	}
-	else if (key == 's' || key == 1)
-	{
-		player->py -= (player->pdy * MOVE_SPEED);
-		player->px -= (player->pdx * MOVE_SPEED);
-	}
+	if (ft_strchr("ws", key) == 0 || key == 13 || key == 1)
+		handle_forw_back(key, p, map);
+	else if (ft_strchr("ad", key) == 0 || key == 0 || key == 2)
+		handle_rotation(key, p);
 }
