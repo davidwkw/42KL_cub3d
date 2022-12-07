@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:11:41 by kwang             #+#    #+#             */
-/*   Updated: 2022/11/10 20:11:08 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/06 18:38:57 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,13 +118,10 @@ void	copy_img(t_data *dst, t_data *src, int x, int y)
 		w = get_offset(x);
 		while (w < src->width && (x + w) < dst->width)
 		{
-			// temp_dst[x+w] = temp_src[w];
 			temp_dst[((y + h) * (dst->size_line / (dst->bpp / 8))) + (x + w)]
 					= temp_src[(h * (src->size_line / (src->bpp / 8))) + w];
 			++w;
 		}
-		// temp_dst += (dst->size_line/(dst->bpp/8));
-		// temp_src += (src->size_line/(src->bpp/8));
 		++h;
 	}
 }
