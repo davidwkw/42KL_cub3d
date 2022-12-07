@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:40:08 by kwang             #+#    #+#             */
-/*   Updated: 2022/11/28 13:00:24 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/06 00:14:16 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,10 @@ void	init_player_mlx(t_player *player, char **map)
 		while (map[y][x] != '\0')
 		{
 			if (ft_strchr("NSEW" , map[y][x]) != NULL)
+			{
 				init_player_var(player, map[y][x], x, y);
+				return ;
+			}
 			++x;
 		}
 		++y;
