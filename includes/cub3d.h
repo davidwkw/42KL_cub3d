@@ -33,7 +33,9 @@
 # define BLUE 0x000000FF
 # define TRANSPARENT 0xFF000000
 
-# define MOVE_SPEED 4
+# define RAD M_PI/180
+# define MOVE_SPEED 1/GRID_SIZE*3
+# define ROT_SPEED RAD*2
 # define FOV 66.0
 
 enum e_textures{
@@ -121,13 +123,32 @@ typedef struct s_player
 {
 	double		px;
 	double		py;
-	t_vector	dir_vector;
-	t_vector	cam_vector;
-	double		dist_to_x;
-	double		dist_to_y;
-	double		pdx;
-	double		pdy;
+	t_vector	dir_vect;
+	t_vector	cam_vect;
 }	t_player;
+
+typedef	struct s_ray_vars
+{
+	t_vector	ray_dir;
+	double		delta_x;
+	double		delta_y;
+	double		side_x;
+	double		side_y;
+	int			step_x;
+	int			step_y;
+	int			map_x;
+	int			map_y;
+	double		perp_wall_dist;
+	int			side;
+	int			scrn_x;
+}	t_ray_vars;
+
+typedef struct s_line_vars
+{
+	int				line_height;
+	int				line_start;
+	int				line_end;
+}	t_line_vars;
 
 typedef struct s_vars
 {
@@ -137,6 +158,7 @@ typedef struct s_vars
 	t_colours	colours;
 	t_player	player;
 	t_map		map;
+	t_data		scrn_buff;
 }	t_vars;
 
 // error_handler.c
@@ -193,10 +215,14 @@ void	cache_minimap(t_map map, void *mlx, t_cache *cache);
 
 // player_utils.c
 void	init_player_var(t_player *player, char orientation, int x, int y);
-void	handle_player_movement(int key, t_player *player);
+void	handle_player_movement(int key, t_player *player, t_map map);
 
 // vect_utils.c
 t_vector	add_vectors(t_vector a, t_vector b);
-t_vector	multiply_with_vector(t_vector vect, double multiple);
+t_vector	multiply_vector(t_vector vect, double multiple);
+
+// raycasting.c
+void	perform_raycast(t_cache tex_cache, t_player p,
+						char **map, t_data *scrn_buff);
 
 #endif
