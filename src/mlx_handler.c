@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/11/28 12:59:58 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/06 18:33:50 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	render_minimap(t_vars *vars)
 	t_data	minimap_buffer;
 
 	create_image(vars->mlx, &minimap_buffer, MINIMAP_SIZE, MINIMAP_SIZE);
-	fill_image_with_color((int *)minimap_buffer.addr, minimap_buffer.width*minimap_buffer.height, RED);
+	fill_image_with_color((int *)minimap_buffer.addr, minimap_buffer.width*minimap_buffer.height, TRANSPARENT);
 	paint_minimap(&minimap_buffer, vars->texture_cache, vars->player);
+	// copy_img(&vars->scrn_buff, &minimap_buffer, MINIMAP_X_OFFSET, MINIMAP_Y_OFFSET);
 	mlx_put_image_to_window(vars->mlx, vars->win, minimap_buffer.img, MINIMAP_X_OFFSET, MINIMAP_Y_OFFSET);
-	// mlx_put_image_to_window(vars->mlx, vars->win, vars->texture_cache.minimap.img, 0, 0);
 	mlx_destroy_image(vars->mlx, minimap_buffer.img);
 }
 
@@ -46,7 +46,7 @@ int	handle_keys(int key, t_vars *vars)
 {
 	printf("%d\n", key);
 	if (ft_strchr("wasd", key) != NULL || (key >= 0 && key <= 2) || key == 13)
-		handle_player_movement(key, &vars->player);
+		handle_player_movement(key, &vars->player, vars->map);
 	if (key == 65307 || key == 53)
 	{
 		printf("Quitting programme\n");
@@ -65,14 +65,12 @@ Return value:
 */
 int	render_screen(t_vars *vars)
 {
-	t_data	screen;
-
-	create_image(vars->mlx, &screen, WIN_WIDTH, WIN_HEIGHT);
-	init_bg_mlx(vars, vars->mlx, &screen);
-	// mlx_put_image_to_window(vars->mlx, vars->win, vars->texture_cache.bg.img, 0, 0);
-	mlx_put_image_to_window(vars->mlx, vars->win, screen.img, 0, 0);
+	create_image(vars->mlx, &vars->scrn_buff, WIN_WIDTH, WIN_HEIGHT);
+	init_bg_mlx(vars, vars->mlx, &vars->scrn_buff);
+	perform_raycast(vars->texture_cache, vars->player, vars->map.map, &vars->scrn_buff);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->scrn_buff.img, 0, 0);
 	render_minimap(vars);
-	mlx_destroy_image(vars->mlx, screen.img);
+	mlx_destroy_image(vars->mlx, vars->scrn_buff.img);
 	return(EXIT_SUCCESS);
 }
 
