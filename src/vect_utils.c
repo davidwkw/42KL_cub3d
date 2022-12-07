@@ -9,7 +9,7 @@ t_vector add_vectors(t_vector a, t_vector b)
 	return (ret);
 }
 
-t_vector multiply_with_vector(t_vector vect, double multiple)
+t_vector multiply_vector(t_vector vect, double multiple)
 {
 	t_vector ret;
 
