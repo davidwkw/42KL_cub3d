@@ -65,8 +65,8 @@ Returns nothing.
 */
 void	init_player_var(t_player *player, char orientation, int x, int y)
 {
-	player->px = x;
-	player->py = y;
+	player->px = x + 0.5;
+	player->py = y + 0.5;
 	set_player_dir_vect(orientation, &player->dir_vect);
 	set_camera_plane(orientation, &player->cam_vect, FOV);
 }
