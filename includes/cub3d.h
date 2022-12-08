@@ -33,7 +33,8 @@
 # define BLUE 0x000000FF
 # define TRANSPARENT 0xFF000000
 
-# define RAD M_PI/180
+// # define RAD M_PI/180
+# define RAD 0.0174533
 # define MOVE_SPEED 1/GRID_SIZE*3
 # define ROT_SPEED RAD*2
 # define FOV 66.0
@@ -224,5 +225,8 @@ t_vector	multiply_vector(t_vector vect, double multiple);
 // raycasting.c
 void	perform_raycast(t_cache tex_cache, t_player p,
 						char **map, t_data *scrn_buff);
+
+// utils.c
+double	absolute_double(double val);
 
 #endif
