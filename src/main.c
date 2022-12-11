@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:30:08 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/11 17:26:15 by kwang            ###   ########.fr       */
+/*   Updated: 2022/10/05 22:12:47 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,3 @@ int	main(int argc, char **argv)
 	handle_mlx(&config);
 	return (EXIT_SUCCESS);
 }
-
-// asdhgashjkdgashjkdgahjksdgjasgd

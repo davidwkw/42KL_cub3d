@@ -3,10 +3,9 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wwan-taj <wwan-taj@student.42kl.edu.my>    +#+  +:+       +#+         #
+#    By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:03:19 by kwang             #+#    #+#              #
-<<<<<<< HEAD
 #    Updated: 2022/12/09 21:55:27 by kwang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -40,23 +39,6 @@ SRC_DIR = src/
 OBJS = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
-=======
-#    Updated: 2022/09/28 23:55:38 by wwan-taj         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-SRCS =	src/main.c \
-		src/error_handler.c \
-		src/file_validator.c \
-		src/textures_validator.c \
-		src/config_parsing_utils.c \
-		src/config_parser.c \
-		src/map_validator.c \
-		src/mlx_handler.c \
-		src/mlx_hook_functions.c
-
-OBJS = $(SRCS:.c=.o)
->>>>>>> f0d4cf028c9740a0e67318ce9f995032109421d6
 
 CC = gcc
 

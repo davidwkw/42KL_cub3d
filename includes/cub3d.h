@@ -195,9 +195,6 @@ void	validate_assets_config(const t_assets assets);
 // config_parser_helper.c
 int		check_assets_set(const t_assets assets);
 
-// map_validator.c
-void	validate_map(char **config_cache);
-
 // config_parsing_utils.c
 int		is_str_empty(const char *str);
 int		is_str_map(const char *str);
