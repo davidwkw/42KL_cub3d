@@ -91,11 +91,11 @@ void	handle_player_movement(int key, t_player *p, t_map map)
 		else if (key == 's' || key == 1)
 			handle_forw_back(p, map, BACKWARD);
 	}
-	else if (ft_strchr("ad", key) != 0 || key == 0 || key == 2)
+	else if (ft_strchr("ad", key) != 0 || key == 2 || key == 0)
 	{
-		if (key == 'a')
+		if (key == 'a' || key == 0)
 			handle_left_right(p, map, LEFT);
-		else if (key == 'd' || key == 0)
+		else if (key == 'd' || key == 2)
 			handle_left_right(p, map, RIGHT);
 	}
 }
