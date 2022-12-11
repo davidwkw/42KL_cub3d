@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:58:02 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/11 19:58:13 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/11 20:03:18 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,9 +252,9 @@ void		handle_player_movement(int key, t_player *player, t_map map);
 t_vector	add_vectors(t_vector a, t_vector b);
 t_vector	multiply_vector(t_vector vect, double multiple);
 
-// raycasting.c
-void		(t_cache tex_cache, t_player p,
-					char **map, t_data *scrn_buff);
+// view_renderer.c
+void		render_view(t_cache tex_cache, t_player p,
+			char **map, t_data *scrn_buff);
 
 // raycasting_utils.c
 void		perform_dda(t_ray_vars *ray_vars, char **map);
