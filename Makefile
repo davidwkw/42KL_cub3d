@@ -6,7 +6,7 @@
 #    By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:03:19 by kwang             #+#    #+#              #
-#    Updated: 2022/12/11 19:43:16 by kwang            ###   ########.fr        #
+#    Updated: 2022/12/11 20:22:26 by kwang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,19 +46,20 @@ CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES) -I/usr/include/ -I$(LIBFTDIR) -O3
 
 LINUXMLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
-MACMLXFLAGS = -lmlx -framework OpenGL -framework AppKit
+MACMLXFLAGS = -Lmlx_mac -lmlx -framework OpenGL -framework AppKit
 
 UNAME_S := $(shell uname -s)
+
     ifeq ($(UNAME_S),Linux)
         CFLAGS += -Imlx_linux
 		MLXFLAGS += $(LINUXMLXFLAGS)
 		MLXDIR = mlx_linux
 		MLX = $(MLXDIR)/libmlx_Linux.a
-    endif
-    ifeq ($(UNAME_S),Darwin)
+    else ifeq ($(UNAME_S),Darwin)
         CFLAGS += -Imlx -Imlx_mac
 		MLXFLAGS += $(MACMLXFLAGS)
 		MLXDIR = mlx_mac
+		MLX = $(MLXDIR)/libmlx.a
     endif
 
 INCLUDES = includes
@@ -80,13 +81,10 @@ $(OBJ_DIR)%.o :	$(SRC_DIR)%.c
 $(LIBFT) :
 				@make -C $(LIBFTDIR) all
 
-ifeq ($(UNAME_S),Linux)
 $(MLX) :
 				@make -C $(MLXDIR)
-$(NAME): $(MLX)
-endif
 
-$(NAME):		$(OBJS) $(INCLUDES)/$(NAME).h $(LIBFT)
+$(NAME):		$(OBJS) $(INCLUDES)/$(NAME).h $(LIBFT) $(MLX)
 				@echo "Creating $(NAME).."
 				@echo "Your display variable is $$DISPLAY"
 				@git submodule init
@@ -104,9 +102,7 @@ clean :
 fclean : 		clean
 				@echo "Cleaning $(NAME)"
 				@make -C $(LIBFTDIR) fclean
-                ifeq ($(UNAME_S),Linux)
-					@make -C $(MLXDIR) clean
-                endif
+				@make -C $(MLXDIR) clean
 				@rm -f $(NAME)
 
 re : 			fclean all
