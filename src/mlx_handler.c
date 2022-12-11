@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/11 20:07:46 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/11 20:25:09 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	handle_mlx(t_config *config)
 	vars.win = mlx_new_window(vars.mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	mlx_hook(vars.win, 17, 0, exit_program_mlx, &vars);
 	mlx_key_hook(vars.win, handle_keys, &vars);
+	mlx_do_key_autorepeaton(vars.mlx);
 	mlx_mouse_hide();
 	mlx_mouse_move(vars.win, WIN_WIDTH/2, WIN_HEIGHT/2);
 	mlx_mouse_get_pos(vars.win, &vars.m_pos.old_pos_x, &vars.m_pos.y);
