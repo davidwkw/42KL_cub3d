@@ -6,7 +6,7 @@
 #    By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:03:19 by kwang             #+#    #+#              #
-#    Updated: 2022/12/11 18:05:22 by kwang            ###   ########.fr        #
+#    Updated: 2022/12/11 18:56:08 by kwang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,16 +49,16 @@ LINUXMLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm 
 
 MACMLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
-MLXFLAGS :=
-
 UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),Linux)
         CFLAGS += -Imlx_linux
 		MLXFLAGS += $(LINUXMLXFLAGS)
+		MLXDIR = mlx_linux
     endif
     ifeq ($(UNAME_S),Darwin)
         CFLAGS += -Imlx
 		MLXFLAGS += $(MACMLXFLAGS)
+		MLXDIR =
     endif
 
 INCLUDES = includes
@@ -69,7 +69,7 @@ LIBFT = $(LIBFTDIR)/libft.a
 
 LIBFTFLAGS = -L$(LIBFTDIR) -lft -I$(LIBFTDIR)
 
-MLX = mlx_linux/libmlx_Linux.a
+MLX = $(MLXDIR)/libmlx_Linux.a
 
 NAME = cub3d
 
@@ -83,7 +83,11 @@ $(LIBFT) :
 				@make -C $(LIBFTDIR) all
 
 $(MLX) :
-				@make -C mlx_linux
+				@make -C $(MLXDIR)
+
+ifeq ($(UNAME_S),Linux)
+    $(NAME): $(MLX)
+endif
 
 $(NAME):		$(OBJS) $(INCLUDES)/$(NAME).h $(LIBFT)
 				@echo "Creating $(NAME).."
@@ -100,10 +104,12 @@ clean :
 				@make -C $(LIBFTDIR) clean
 				@rm -rf $(OBJ_DIR)
 				
-
 fclean : 		clean
 				@echo "Cleaning $(NAME)"
 				@make -C $(LIBFTDIR) fclean
+                ifeq ($(UNAME_S),Linux)
+					@make -C $(MLXDIR) clean
+                endif
 				@rm -f $(NAME)
 
 re : 			fclean all
