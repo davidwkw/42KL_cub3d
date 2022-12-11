@@ -6,7 +6,7 @@
 #    By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:03:19 by kwang             #+#    #+#              #
-#    Updated: 2022/12/08 14:58:08 by kwang            ###   ########.fr        #
+#    Updated: 2022/12/09 21:55:27 by kwang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,11 @@ SRC_FILES =		main.c \
 				minimap_initializer.c \
 				player_utils.c \
 				vect_utils.c \
-				raycasting.c \
-				utils.c
+				view_renderer.c \
+				utils.c \
+				input_handler.c \
+				raycasting_utils.c \
+				movement_utils.c
 
 OBJ_DIR = obj/
 

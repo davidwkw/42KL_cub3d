@@ -71,57 +71,6 @@ void	init_player_var(t_player *player, char orientation, int x, int y)
 	set_camera_plane(orientation, &player->cam_vect, FOV);
 }
 
-static void handle_forw_back(char key, t_player *p, t_map map)
-{
-	if (key == 'w' || key == 13)
-	{
-		if (map.map[(int)(p->py + p->dir_vect.y * MOVE_SPEED)][(int)p->px] != '1')
-			p->py += p->dir_vect.y * MOVE_SPEED;
-		if (map.map[(int)p->py][(int)(p->px  + p->dir_vect.x * MOVE_SPEED)] != '1')
-			p->px += p->dir_vect.x * MOVE_SPEED;
-	}
-	else if (key == 's' || key == 1)
-	{
-		if (map.map[(int)(p->py - p->dir_vect.y * MOVE_SPEED)][(int)p->px] != '1')
-			p->py -= p->dir_vect.y * MOVE_SPEED;
-		if (map.map[(int)p->py][(int)(p->px  - p->dir_vect.x * MOVE_SPEED)] != '1')
-			p->px -= p->dir_vect.x * MOVE_SPEED;
-	}
-}
-
-static void	handle_rotation(char key, t_player *p)
-{
-	double	prev_dir_x;
-	double	prev_plane_x;
-
-	if (key == 'a' || key == 0)
-	{
-		prev_dir_x = p->dir_vect.x;
-		p->dir_vect.x = p->dir_vect.x * cos(-ROT_SPEED)
-						- p->dir_vect.y * sin(-ROT_SPEED);
-		p->dir_vect.y = prev_dir_x * sin(-ROT_SPEED)
-						+ p->dir_vect.y * cos(-ROT_SPEED);
-		prev_plane_x = p->cam_vect.x;
-		p->cam_vect.x = p->cam_vect.x * cos(-ROT_SPEED)
-						- p->cam_vect.y * sin(-ROT_SPEED);
-		p->cam_vect.y = prev_plane_x * sin(-ROT_SPEED)
-						+ p->cam_vect.y * cos(-ROT_SPEED);
-	}
-	else if (key == 'd' || key == 2)
-	{
-		prev_dir_x = p->dir_vect.x;
-		p->dir_vect.x = p->dir_vect.x * cos(ROT_SPEED)
-						- p->dir_vect.y * sin(ROT_SPEED);
-		p->dir_vect.y = prev_dir_x * sin(ROT_SPEED)
-						+ p->dir_vect.y * cos(ROT_SPEED);
-		prev_plane_x = p->cam_vect.x;
-		p->cam_vect.x = p->cam_vect.x * cos(ROT_SPEED)
-						- p->cam_vect.y * sin(ROT_SPEED);
-		p->cam_vect.y = prev_plane_x * sin(ROT_SPEED)
-						+ p->cam_vect.y * cos(ROT_SPEED);
-	}
-}
-
 /*
 Parameters:
 key - Keycode of button pressed
@@ -136,7 +85,17 @@ Returns nothing.
 void	handle_player_movement(int key, t_player *p, t_map map)
 {
 	if (ft_strchr("ws", key) != 0 || key == 13 || key == 1)
-		handle_forw_back(key, p, map);
+	{
+		if (key == 'w')
+			handle_forw_back(p, map, FORWARD);
+		else
+			handle_forw_back(p, map, BACKWARD);
+	}
 	else if (ft_strchr("ad", key) != 0 || key == 0 || key == 2)
-		handle_rotation(key, p);
+	{
+		if (key == 'a')
+			handle_left_right(p, map, LEFT);
+		else
+			handle_left_right(p, map, RIGHT);
+	}
 }

@@ -1,99 +1,5 @@
 #include "cub3d.h"
 
-static void draw_ver_line(t_data *scrn_data, int x, int start, int end, int color)
-{
-	int *scrn;
-
-	scrn = (int *)scrn_data->addr;
-	while (start != end)
-	{
-		scrn[start * scrn_data->size_line / (scrn_data->bpp / 8) + x] = color;
-		++start;
-	}
-}
-
-static void	calc_delta(t_ray_vars *ray_vars)
-{
-	if (ray_vars->ray_dir.x == 0)
-		ray_vars->delta_x = 1e30;
-	else
-		ray_vars->delta_x = absolute_double(1/ray_vars->ray_dir.x);
-	if (ray_vars->ray_dir.y == 0)
-		ray_vars->delta_y = 1e30;
-	else
-		ray_vars->delta_y = absolute_double(1/ray_vars->ray_dir.y);
-}
-
-static void	calc_side_dist(t_ray_vars *ray_vars, t_player p)
-{
-	if (ray_vars->ray_dir.x < 0)
-	{
-		ray_vars->step_x = -1;
-		ray_vars->side_x = (p.px - ray_vars->map_x) * ray_vars->delta_x;
-	}
-	else
-	{
-		ray_vars->step_x = 1;
-		ray_vars->side_x = (ray_vars->map_x + 1.0 - p.px) * ray_vars->delta_x;
-	}
-	if (ray_vars->ray_dir.y < 0)
-	{
-		ray_vars->step_y = -1;
-		ray_vars->side_y = (p.py - ray_vars->map_y) * ray_vars->delta_y;
-	}
-	else
-	{
-		ray_vars->step_y = 1;
-		ray_vars->side_y = (ray_vars->map_y + 1.0 - p.py) * ray_vars->delta_y;
-	}
-}
-
-static int	determine_side_hit(t_ray_vars ray_vars)
-{
-	if (ray_vars.side == 0)
-	{
-		if (ray_vars.ray_dir.x < 0)
-			return (WEST);
-		else
-			return (EAST);
-	}
-	else
-	{
-		if (ray_vars.ray_dir.y < 0)
-			return (NORTH);
-		else
-			return (SOUTH);
-	}
-}
-
-static void	perform_dda(t_ray_vars *ray_vars, char **map)
-{
-	int	hit;
-
-	hit = 0;
-	while (hit == 0)
-	{
-		if (ray_vars->side_x < ray_vars->side_y)
-		{
-			ray_vars->side_x += ray_vars->delta_x;
-			ray_vars->map_x += ray_vars->step_x;
-			ray_vars->side = 0;
-		}
-		else
-		{
-			ray_vars->side_y += ray_vars->delta_y;
-			ray_vars->map_y += ray_vars->step_y;
-			ray_vars->side = 1;
-		}
-		if (map[ray_vars->map_y][ray_vars->map_x] == '1')
-			hit = 1;
-	}
-	if (ray_vars->side == 0)
-		ray_vars->perp_wall_dist = ray_vars->side_x - ray_vars->delta_x;
-	else
-		ray_vars->perp_wall_dist = ray_vars->side_y - ray_vars->delta_y;
-}
-
 t_line_vars	calc_line_vals(t_ray_vars ray_vars)
 {
 	t_line_vars	line_vars;
@@ -158,17 +64,7 @@ void draw_textured_line(t_ray_vars ray_vars, t_player p,
 	}
 }
 
-void	print_ray(t_ray_vars ray_vars)
-{
-	printf("ray x %f\n", ray_vars.ray_dir.x);
-	printf("ray y %f\n", ray_vars.ray_dir.y);
-	printf("dx %f\n", ray_vars.delta_x);
-	printf("dy %f\n", ray_vars.delta_y);
-	printf("sx %f\n", ray_vars.side_x);
-	printf("sy %f\n", ray_vars.side_y);
-}
-
-void	perform_raycast(t_cache tex_cache, t_player p,
+void	render_view(t_cache tex_cache, t_player p,
 						char **map, t_data *scrn_buff)
 {
 	double		cam_plane_pos_x;

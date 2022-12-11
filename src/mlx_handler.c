@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/06 18:33:50 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/09 22:37:21 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,36 +42,20 @@ Description:
 Return value:
 
 */
-int	handle_keys(int key, t_vars *vars)
-{
-	printf("%d\n", key);
-	if (ft_strchr("wasd", key) != NULL || (key >= 0 && key <= 2) || key == 13)
-		handle_player_movement(key, &vars->player, vars->map);
-	if (key == 65307 || key == 53)
-	{
-		printf("Quitting programme\n");
-		exit_program_mlx(vars);
-	}
-	return (EXIT_SUCCESS);
-}
-
-/*
-Parameters:
-
-Description:
-
-Return value:
-
-*/
-int	render_screen(t_vars *vars)
+static void	render_screen(t_vars *vars)
 {
 	create_image(vars->mlx, &vars->scrn_buff, WIN_WIDTH, WIN_HEIGHT);
 	init_bg_mlx(vars, vars->mlx, &vars->scrn_buff);
-	perform_raycast(vars->texture_cache, vars->player, vars->map.map, &vars->scrn_buff);
+	render_view(vars->texture_cache, vars->player, vars->map.map, &vars->scrn_buff);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->scrn_buff.img, 0, 0);
 	render_minimap(vars);
 	mlx_destroy_image(vars->mlx, vars->scrn_buff.img);
-	return(EXIT_SUCCESS);
+}
+
+static int loop_game(t_vars *vars)
+{
+	handle_mouse(vars, &vars->m_pos);
+	render_screen(vars);
 }
 
 /*
@@ -88,7 +72,7 @@ void	handle_mlx(t_config *config)
 {
 	t_vars	vars;
 
-	vars = (t_vars){};
+	vars = (t_vars){.m_pos = (t_mouse){.old_pos_x = WIN_WIDTH/2}};
 	vars.mlx = mlx_init();
 	vars.map = config->map;
 	if (!vars.mlx)
@@ -102,6 +86,9 @@ void	handle_mlx(t_config *config)
 	vars.win = mlx_new_window(vars.mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	mlx_hook(vars.win, 17, 0, exit_program_mlx, &vars);
 	mlx_key_hook(vars.win, handle_keys, &vars);
-	mlx_loop_hook(vars.mlx, render_screen, &vars);
+	mlx_mouse_hide(vars.mlx, vars.win);
+	mlx_mouse_move(vars.mlx, vars.win, WIN_WIDTH/2, WIN_HEIGHT/2);
+	mlx_mouse_get_pos(vars.mlx, vars.win, &vars.m_pos.old_pos_x, &vars.m_pos.y);
+	mlx_loop_hook(vars.mlx, loop_game, &vars);
 	mlx_loop(vars.mlx);
 }

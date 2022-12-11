@@ -6,6 +6,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <sys/types.h>
+# include <sys/time.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <math.h>
@@ -33,11 +34,13 @@
 # define BLUE 0x000000FF
 # define TRANSPARENT 0xFF000000
 
-// # define RAD M_PI/180
-# define RAD 0.0174533
-# define MOVE_SPEED 1/GRID_SIZE*3
+# define RAD M_PI/180
+# define MOVE_SPEED 1/GRID_SIZE*5
 # define ROT_SPEED RAD*2
 # define FOV 66.0
+# define M_MOVE_THRESHOLD 0
+# define M_POLL_RATE 1000
+# define M_SENSITIVITY (FOV/180*M_PI)/WIN_WIDTH*1.3
 
 enum e_textures{
 	NORTH = 0,
@@ -45,6 +48,13 @@ enum e_textures{
 	EAST,
 	WEST,
 	TEXTURES_SIZE
+};
+
+enum e_dir{
+	FORWARD = 0,
+	BACKWARD,
+	LEFT,
+	RIGHT
 };
 
 enum e_colours{
@@ -151,6 +161,13 @@ typedef struct s_line_vars
 	int				line_end;
 }	t_line_vars;
 
+typedef struct s_mouse
+{
+	int	x;
+	int	y;
+	int	old_pos_x;
+}	t_mouse;
+
 typedef struct s_vars
 {
 	void		*mlx;
@@ -160,6 +177,7 @@ typedef struct s_vars
 	t_player	player;
 	t_map		map;
 	t_data		scrn_buff;
+	t_mouse		m_pos;
 }	t_vars;
 
 // error_handler.c
@@ -223,8 +241,24 @@ t_vector	add_vectors(t_vector a, t_vector b);
 t_vector	multiply_vector(t_vector vect, double multiple);
 
 // raycasting.c
-void	perform_raycast(t_cache tex_cache, t_player p,
+void	render_view(t_cache tex_cache, t_player p,
 						char **map, t_data *scrn_buff);
+
+// raycasting_utils.c
+void	perform_dda(t_ray_vars *ray_vars, char **map);
+void	calc_delta(t_ray_vars *ray_vars);
+void	calc_side_dist(t_ray_vars *ray_vars, t_player p);
+int		determine_side_hit(t_ray_vars ray_vars);
+void	perform_dda(t_ray_vars *ray_vars, char **map);
+
+// input_handler.c
+void		handle_mouse(t_vars *vars, t_mouse *mouse);
+int		handle_keys(int key, t_vars *vars);
+
+// movement_utils.c
+void	handle_forw_back(t_player *p, t_map map, int dir);
+void	handle_left_right(t_player *p, t_map map, int dir);
+void	handle_rotation(t_player *p, double rot_speed);
 
 // utils.c
 double	absolute_double(double val);
