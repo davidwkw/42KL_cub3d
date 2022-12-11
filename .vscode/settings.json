@@ -3,7 +3,9 @@
 		"cub3d.h": "c",
 		"stdio.h": "c",
 		"string_view": "c",
-		"cmath": "c"
+		"cmath": "c",
+		"time.h": "c",
+		"fcntl.h": "c"
 	},
 	"C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
 }

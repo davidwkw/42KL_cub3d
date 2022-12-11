@@ -100,7 +100,7 @@ typedef struct s_cache
 
 typedef struct s_colours
 {
-	union
+	union u_colours
 	{
 		struct
 		{
@@ -181,86 +181,86 @@ typedef struct s_vars
 }	t_vars;
 
 // error_handler.c
-void	error_handler(const char *msg, const char *func, int err_no);
+void		error_handler(const char *msg, const char *func, int err_no);
 
 // file_validator.c
-void	validate_ext(const char *filename, const char *ext_to_check);
+void		validate_ext(const char *filename, const char *ext_to_check);
 
 // config_parser.c
-void	parse_config(const char *filename, t_config *config);
+void		parse_config(const char *filename, t_config *config);
 
 // assets_validator.c
-void	validate_assets_config(const t_assets assets);
+void		validate_assets_config(const t_assets assets);
 
 // config_parser_helper.c
-int		check_assets_set(const t_assets assets);
+int			check_assets_set(const t_assets assets);
 
 // config_parsing_utils.c
-int		is_str_empty(const char *str);
-int		is_str_map(const char *str);
-int		is_rgb_value(const char *str);
+int			is_str_empty(const char *str);
+int			is_str_map(const char *str);
+int			is_rgb_value(const char *str);
 
 // map_validator_utils.c
-void	fill_space(char **temp_arr, int arrlen, int size);
-void	copy_into_temp(char **dst, char **src, int len);
-int		get_longest_line(char **config_cache);
+void		fill_space(char **temp_arr, int arrlen, int size);
+void		copy_into_temp(char **dst, char **src, int len);
+int			get_longest_line(char **config_cache);
 
 // map_validator.c
-void	validate_map(char **map_cache);
+void		validate_map(char **map_cache);
 
 // mlx_handler.c
-void	handle_mlx(t_config *config);
+void		handle_mlx(t_config *config);
 
 // mlx_hook_functions.c
-int		exit_program_mlx(t_vars *mlx);
+int			exit_program_mlx(t_vars *mlx);
 
 // mlx_initializer.c
-void	init_config_textures_mlx(void *p_mlx, t_cache *texture_cache,
-		char *textures[], size_t size);
-void	init_colours_mlx(t_colours *colours_cache,
-			char *colours[], size_t size);
-void	init_player_mlx(t_player *player, char **map);
-void	init_bg_mlx(t_colours colours, t_data *bg);
+void		init_config_textures_mlx(void *p_mlx, t_cache *texture_cache,
+									char *textures[], size_t size);
+void		init_colours_mlx(t_colours *colours_cache,
+				char *colours[], size_t size);
+void		init_player_mlx(t_player *player, char **map);
+void		init_bg_mlx(t_colours colours, t_data *bg);
 
 // image_utils.c
-void	cache_image_from_xpm(void *mlx, t_data *img, char *path);
-void	create_image(void *mlx, t_data *img, int width, int height);
-void	fill_image_with_color(int *img_addr, int num_pixels, int colour);
-void	copy_img(t_data *dst, t_data *src, int x, int y);
+void		cache_image_from_xpm(void *mlx, t_data *img, char *path);
+void		create_image(void *mlx, t_data *img, int width, int height);
+void		fill_image_with_color(int *img_addr, int num_pixels, int colour);
+void		copy_img(t_data *dst, t_data *src, int x, int y);
 
 // minimap_initializer.c
-void	cache_minimap_assets(void *vars, t_cache *cache);
-void	cache_minimap(t_map map, void *mlx, t_cache *cache);
+void		cache_minimap_assets(void *vars, t_cache *cache);
+void		cache_minimap(t_map map, void *mlx, t_cache *cache);
 
 // player_utils.c
-void	init_player_var(t_player *player, char orientation, int x, int y);
-void	handle_player_movement(int key, t_player *player, t_map map);
+void		init_player_var(t_player *player, char orientation, int x, int y);
+void		handle_player_movement(int key, t_player *player, t_map map);
 
 // vect_utils.c
 t_vector	add_vectors(t_vector a, t_vector b);
 t_vector	multiply_vector(t_vector vect, double multiple);
 
 // raycasting.c
-void	render_view(t_cache tex_cache, t_player p,
-						char **map, t_data *scrn_buff);
+void		(t_cache tex_cache, t_player p,
+					char **map, t_data *scrn_buff);
 
 // raycasting_utils.c
-void	perform_dda(t_ray_vars *ray_vars, char **map);
-void	calc_delta(t_ray_vars *ray_vars);
-void	calc_side_dist(t_ray_vars *ray_vars, t_player p);
-int		determine_side_hit(t_ray_vars ray_vars);
-void	perform_dda(t_ray_vars *ray_vars, char **map);
+void		perform_dda(t_ray_vars *ray_vars, char **map);
+void		calc_delta(t_ray_vars *ray_vars);
+void		calc_side_dist(t_ray_vars *ray_vars, t_player p);
+int			determine_side_hit(t_ray_vars ray_vars);
+void		perform_dda(t_ray_vars *ray_vars, char **map);
 
 // input_handler.c
 void		handle_mouse(t_vars *vars, t_mouse *mouse);
-int		handle_keys(int key, t_vars *vars);
+int			handle_keys(int key, t_vars *vars);
 
 // movement_utils.c
-void	handle_forw_back(t_player *p, t_map map, int dir);
-void	handle_left_right(t_player *p, t_map map, int dir);
-void	handle_rotation(t_player *p, double rot_speed);
+void		handle_forw_back(t_player *p, t_map map, int dir);
+void		handle_left_right(t_player *p, t_map map, int dir);
+void		handle_rotation(t_player *p, double rot_speed);
 
 // utils.c
-double	absolute_double(double val);
+double		absolute_double(double val);
 
 #endif
