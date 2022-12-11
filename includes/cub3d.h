@@ -40,7 +40,7 @@
 # define FOV 66.0
 # define M_MOVE_THRESHOLD 0
 # define M_POLL_RATE 1000
-# define M_SENSITIVITY (FOV/180*M_PI)/WIN_WIDTH*1.3
+# define M_SENSITIVITY (FOV/180*M_PI)/WIN_WIDTH*2
 
 enum e_textures{
 	NORTH = 0,
@@ -220,7 +220,7 @@ void	init_config_textures_mlx(void *p_mlx, t_cache *texture_cache,
 void	init_colours_mlx(t_colours *colours_cache,
 			char *colours[], size_t size);
 void	init_player_mlx(t_player *player, char **map);
-void	init_bg_mlx(t_vars *vars, void *mlx, t_data *bg);
+void	init_bg_mlx(t_colours colours, t_data *bg);
 
 // image_utils.c
 void	cache_image_from_xpm(void *mlx, t_data *img, char *path);

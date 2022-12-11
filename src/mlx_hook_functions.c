@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:15:00 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/03 19:51:35 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/11 19:36:22 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,46 +26,7 @@ Does not technically return a value because of exit() system call.
 int	exit_program_mlx(t_vars *mlx)
 {
 	mlx_destroy_window(mlx->mlx, mlx->win);
-        system("leaks cub3d");
+        // system("leaks cub3d");
 	exit(EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
-}
-
-/*
-static  void    pixels_drawer(t_vars *mlx)
-{
-        t_vector        ind;
-        t_vector        pixel;
-
-        ind.x = 0;
-        pixel.x = 0;
-        pixel.y = 0;
-        while (ind.x < prog->map.size.y)
-        {
-                if (prog->movetimer > 0)
-                        prog->movetimer--;
-                ind.y = 0;
-                while (ind.y < prog->map.size.x)
-                {
-                        putsprite(prog->map.arr[ind.x][ind.y], prog, &prog->map, &pixel);
-                        ind.y++;
-                        pixel.x += 32;
-                }
-                ind.x++;
-                pixel.x = 0;
-                pixel.y += 32;
-        }
-}
-*/
-
-/*
-Parameters:
-
-Description:
-
-Return value:
-*/
-int	map_renderer(t_vars *mlx)
-{
-	return (0);
 }

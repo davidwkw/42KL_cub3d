@@ -6,7 +6,7 @@
 #    By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:03:19 by kwang             #+#    #+#              #
-#    Updated: 2022/12/11 19:26:59 by kwang            ###   ########.fr        #
+#    Updated: 2022/12/11 19:43:16 by kwang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,7 @@ SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 CC = gcc
 
-# CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES) -I/usr/include/ -Imlx_linux -O3
-
-CFLAGS = -I$(INCLUDES) -I/usr/include/ -I$(LIBFTDIR)
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES) -I/usr/include/ -I$(LIBFTDIR) -O3
 
 LINUXMLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 

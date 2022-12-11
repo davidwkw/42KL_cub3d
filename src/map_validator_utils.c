@@ -39,8 +39,7 @@ Does not return anything
 */
 void	copy_into_temp(char **dst, char **src, int len)
 {
-	size_t	i;
-	size_t	j;
+	int		i;
 	int		arrlen;
 
 	arrlen = ft_2darrlen(src);
@@ -74,7 +73,7 @@ int	get_longest_line(char **config_cache)
 	arrlen = ft_2darrlen(config_cache);
 	while (i < arrlen)
 	{
-		if (ft_strlen(config_cache[i]) > max)
+		if ((int)ft_strlen(config_cache[i]) > max)
 			max = ft_strlen(config_cache[i]);
 		i++;
 	}

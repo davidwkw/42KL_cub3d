@@ -17,11 +17,12 @@ Returns true if valid, false otherwise.
 */
 static int	check_enclosed(char **map, int x, int y)
 {
-	if (x < 0 || y < 0 || y > ft_2darrlen(map) - 1 || x > ft_strlen(map[y]) - 1)
+	if (x < 0 || y < 0 || y > ft_2darrlen(map) - 1
+		|| x > (int)ft_strlen(map[y]) - 1)
 		return (true);
 	if (map[y][x] == '1' || map[y][x] == 'X')
 		return (true);
-	if (x == 0 || x == ft_strlen(map[y]) - 1
+	if (x == 0 || x == (int)ft_strlen(map[y]) - 1
 		|| y == 0 || y == ft_2darrlen(map) - 1)
 		return (false);
 	if (map[y][x] == ' ')
@@ -52,7 +53,6 @@ static int	check_map(char **map)
 {
 	int	x;
 	int	y;
-	int	len;
 
 	y = 0;
 	while (map[y] != NULL)
@@ -91,7 +91,7 @@ static int	check_plyr_oob(char **map, int i, int j)
 	int	row_limit;
 
 	row_limit = ft_2darrlen(map);
-	if (j <= 0 || i <= 0 || i == row_limit - 1 || j == ft_strlen(map[i]) - 1)
+	if (j <= 0 || i <= 0 || i == row_limit - 1 || j == (int)ft_strlen(map[i]) - 1)
 		return (false);
 	return (!(map[i - 1][j - 1] == ' '
 		|| map[i - 0][j - 1] == ' '

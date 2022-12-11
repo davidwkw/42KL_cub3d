@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:57:22 by kwang             #+#    #+#             */
-/*   Updated: 2022/11/08 15:37:36 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/11 19:35:02 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ static void	cache_map(t_map *map, char **map_config)
 		map_end = ft_strrchr(map_config[i], '1');
 		map->map[i] = ft_substr(map_config[i], 0, map_end - map_config[i] + 1);
 		temp = ft_strlen(map->map[i]);
-		if (temp > map->width)
+		if (temp > (size_t)map->width)
 			map->width = temp;
 		++i;
 	}
