@@ -86,16 +86,16 @@ void	handle_player_movement(int key, t_player *p, t_map map)
 {
 	if (ft_strchr("ws", key) != 0 || key == 13 || key == 1)
 	{
-		if (key == 'w')
+		if (key == 'w' || key == 13)
 			handle_forw_back(p, map, FORWARD);
-		else
+		else if (key == 's' || key == 1)
 			handle_forw_back(p, map, BACKWARD);
 	}
 	else if (ft_strchr("ad", key) != 0 || key == 0 || key == 2)
 	{
 		if (key == 'a')
 			handle_left_right(p, map, LEFT);
-		else
+		else if (key == 'd' || key == 0)
 			handle_left_right(p, map, RIGHT);
 	}
 }
