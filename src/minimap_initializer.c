@@ -56,7 +56,7 @@ void	cache_minimap(t_map map, void *mlx, t_cache *cache)
 				map.width*MINIMAP_GRID_SIZE, map.height*MINIMAP_GRID_SIZE);
 	fill_image_with_color((int *)cache->minimap.addr,
 						cache->minimap.width*cache->minimap.height,
-						BLUE);
+						T70_BLUE);
 	y = 0;
 	while (map.map[y] != NULL)
 	{

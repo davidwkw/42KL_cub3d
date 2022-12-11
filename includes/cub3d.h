@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:58:02 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/11 20:11:31 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/11 21:14:23 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
 # define TRANSPARENT 0xFF000000
+# define T70_BLUE 0xB30000FF
 
 # define RAD M_PI/180
 # define MOVE_SPEED 1/GRID_SIZE*5

@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/11 21:05:42 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/11 21:17:33 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ void	render_minimap(t_vars *vars)
 	t_data	minimap_buffer;
 
 	create_image(vars->mlx, &minimap_buffer, MINIMAP_SIZE, MINIMAP_SIZE);
-	fill_image_with_color((int *)minimap_buffer.addr, minimap_buffer.width*minimap_buffer.height, TRANSPARENT);
+	fill_image_with_color((int *)minimap_buffer.addr, minimap_buffer.width*minimap_buffer.height, T70_BLUE);
 	paint_minimap(&minimap_buffer, vars->texture_cache, vars->player);
-	// copy_img(&vars->scrn_buff, &minimap_buffer, MINIMAP_X_OFFSET, MINIMAP_Y_OFFSET);
 	mlx_put_image_to_window(vars->mlx, vars->win, minimap_buffer.img, MINIMAP_X_OFFSET, MINIMAP_Y_OFFSET);
 	mlx_destroy_image(vars->mlx, minimap_buffer.img);
 }
