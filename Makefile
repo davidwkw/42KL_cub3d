@@ -6,7 +6,7 @@
 #    By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:03:19 by kwang             #+#    #+#              #
-#    Updated: 2022/12/09 21:55:27 by kwang            ###   ########.fr        #
+#    Updated: 2022/12/11 18:05:22 by kwang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,8 @@ $(MLX) :
 $(NAME):		$(OBJS) $(INCLUDES)/$(NAME).h $(LIBFT)
 				@echo "Creating $(NAME).."
 				@echo "Your display variable is $$DISPLAY"
+				@git submodule init
+				@git submodule update
 				$(CC) $(OBJS) -o $@ $(LIBFTFLAGS) $(MLXFLAGS)
 
 bonus : 		${NAME}
