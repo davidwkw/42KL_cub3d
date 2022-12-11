@@ -6,7 +6,7 @@
 #    By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:03:19 by kwang             #+#    #+#              #
-#    Updated: 2022/12/11 18:56:08 by kwang            ###   ########.fr        #
+#    Updated: 2022/12/11 19:26:59 by kwang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 CC = gcc
 
 # CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES) -I/usr/include/ -Imlx_linux -O3
+
 CFLAGS = -I$(INCLUDES) -I/usr/include/ -I$(LIBFTDIR)
 
 LINUXMLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
@@ -54,11 +55,12 @@ UNAME_S := $(shell uname -s)
         CFLAGS += -Imlx_linux
 		MLXFLAGS += $(LINUXMLXFLAGS)
 		MLXDIR = mlx_linux
+		MLX = $(MLXDIR)/libmlx_Linux.a
     endif
     ifeq ($(UNAME_S),Darwin)
-        CFLAGS += -Imlx
+        CFLAGS += -Imlx -Imlx_mac
 		MLXFLAGS += $(MACMLXFLAGS)
-		MLXDIR =
+		MLXDIR = mlx_mac
     endif
 
 INCLUDES = includes
@@ -68,8 +70,6 @@ LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
 LIBFTFLAGS = -L$(LIBFTDIR) -lft -I$(LIBFTDIR)
-
-MLX = $(MLXDIR)/libmlx_Linux.a
 
 NAME = cub3d
 
@@ -82,11 +82,10 @@ $(OBJ_DIR)%.o :	$(SRC_DIR)%.c
 $(LIBFT) :
 				@make -C $(LIBFTDIR) all
 
+ifeq ($(UNAME_S),Linux)
 $(MLX) :
 				@make -C $(MLXDIR)
-
-ifeq ($(UNAME_S),Linux)
-    $(NAME): $(MLX)
+$(NAME): $(MLX)
 endif
 
 $(NAME):		$(OBJS) $(INCLUDES)/$(NAME).h $(LIBFT)
