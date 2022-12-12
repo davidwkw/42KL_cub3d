@@ -6,7 +6,7 @@
 #    By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:03:19 by kwang             #+#    #+#              #
-#    Updated: 2022/12/11 21:04:48 by kwang            ###   ########.fr        #
+#    Updated: 2022/12/12 16:06:40 by kwang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,6 @@ bonus : 		${NAME}
 
 clean :
 				@echo "Cleaning all .o files.."
-				# @make -C mlx_linux clean
 				@make -C $(LIBFTDIR) clean
 				@rm -rf $(OBJ_DIR)
 				

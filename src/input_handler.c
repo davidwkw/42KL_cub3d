@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:05:12 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:05:15 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:11:28 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	handle_mouse(t_vars *vars, t_mouse *mouse)
 	static struct timeval	prev;
 
 	gettimeofday(&tv, NULL);
-	if (tv.tv_sec == prev.tv_sec && (tv.tv_usec - prev.tv_usec) < (1000000 / M_POLL_RATE))
+	if (tv.tv_sec == prev.tv_sec
+		&& (tv.tv_usec - prev.tv_usec) < (1000000 / M_POLL_RATE))
 		return ;
 	mlx_mouse_get_pos(vars->win, &vars->mouse.x, &vars->mouse.y);
 	dir = vars->mouse.x - mouse->old_pos_x;
