@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 23:55:39 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 00:23:07 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,14 @@ void	handle_mlx(t_config *config)
 	mlx_hook(vars.win, 17, 0, exit_program_mlx, &vars);
 	mlx_hook(vars.win, 2, 0, handle_keys, &vars);
 	mlx_do_key_autorepeaton(vars.mlx);
-	mlx_mouse_hide();
-	mlx_mouse_move(vars.win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
-	mlx_mouse_get_pos(vars.win, &vars.mouse.old_pos_x, &vars.mouse.y);
+	mlx_mouse_hide(vars.mlx, vars.win);
+	mlx_mouse_move(vars.mlx, vars.win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	mlx_mouse_get_pos(vars.mlx, vars.win, &vars.mouse.old_pos_x, &vars.mouse.y);
 	mlx_loop_hook(vars.mlx, loop_game, &vars);
 	mlx_loop(vars.mlx);
 }
 
 // replace in linux version
+// mlx_mouse_hide(vars.mlx, vars.win);
 // mlx_mouse_move(vars.mlx, vars.win, WIN_WIDTH/2, WIN_HEIGHT/2);
 // mlx_mouse_get_pos(vars.mlx, vars.win, &vars.mouse.old_pos_x, &vars.mouse.y);

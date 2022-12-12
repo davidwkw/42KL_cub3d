@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:15:00 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:26:58 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 00:24:10 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Does not technically return a value because of exit() system call.
 int	exit_program_mlx(t_vars *mlx)
 {
 	mlx_destroy_window(mlx->mlx, mlx->win);
-	system("leaks cub3d");
+	// system("leaks cub3d");
 	exit(EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
 }
