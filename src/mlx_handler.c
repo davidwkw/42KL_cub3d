@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 15:30:36 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 15:42:15 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,8 @@ static void	render_screen(t_vars *vars)
 
 static int loop_game(t_vars *vars)
 {
-	// if ()
-	{
+	if (vars->mouse == 0)
 		handle_mouse(vars, &vars->mouse);
-	}
 	render_screen(vars);
 	return (EXIT_SUCCESS);
 }
