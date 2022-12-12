@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:07:29 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:46:50 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:48:47 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	draw_textured_line(t_ray_vars ray_v, t_player p,
 	{
 		tex.tex_y = (int)tex.texture_pos & (tex_data.height - 1);
 		tex.texture_pos += tex.step;
-		scrn[y * s_buff->size_line / (s_buff->bpp / 8) + ray_v.scrn_x]
+		scrn_addr[y * s_buff->size_line / (s_buff->bpp / 8) + ray_v.scrn_x]
 			= tex_addr[tex.tex_y * tex_data.size_line / (tex_data.bpp / 8)
 			+ tex.tex_x];
 	}
