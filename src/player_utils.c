@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:01 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:22:50 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:47:59 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	handle_player_movement(int key, t_player *p, t_map map)
 		if (key == 'w' || key == 13)
 			handle_forw_back(p, map, FORWARD);
 		else if (key == 's' || key == 1)
-			handle_forw_back(p, map, B A CKWARD);
+			handle_forw_back(p, map, BACKWARD);
 	}
 	if (ft_strchr("ad", key) != 0 || key == 2 || key == 0)
 	{
