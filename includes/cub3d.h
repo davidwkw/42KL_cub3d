@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:58:02 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:22:50 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:42:40 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,14 @@ typedef struct s_mouse
 	int		y;
 	int		old_pos_x;
 }	t_mouse;
+
+typedef struct s_tex
+{
+	int			tex_x;
+	int			tex_y;
+	double		step;
+	double		texture_pos;
+}	t_tex;
 
 typedef struct s_vars
 {

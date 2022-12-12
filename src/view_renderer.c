@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:07:29 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:22:50 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:46:50 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,26 @@ void	draw_textured_line(t_ray_vars ray_v, t_player p,
 						t_data tex_data, t_data *s_buff)
 {
 	t_line_vars	line_vars;
-	int			tex_x;
-	int			tex_y;
-	double		step;
-	double		texture_pos;
+	t_tex		tex;
 	int			y;
-	int			pixel;
-	int			*scrn;
-	int			*tex;
+	int			*scrn_addr;
+	int			*tex_addr;
 
-	scrn = (int *)s_buff->addr;
-	tex = (int *)tex_data.addr;
+	scrn_addr = (int *)s_buff->addr;
+	tex_addr = (int *)tex_data.addr;
 	line_vars = calc_line_vals(ray_v);
-	tex_x = calc_texture_x(ray_v, p, tex_data.width);
-	step = 1.0 * tex_data.height / line_vars.line_height;
-	texture_pos = (line_vars.line_start
-			- WIN_HEIGHT / 2 + line_vars.line_height / 2) * step;
+	tex.tex_x = calc_texture_x(ray_v, p, tex_data.width);
+	tex.step = 1.0 * tex_data.height / line_vars.line_height;
+	tex.texture_pos = (line_vars.line_start
+			- WIN_HEIGHT / 2 + line_vars.line_height / 2) * tex.step;
 	y = line_vars.line_start - 1;
 	while (++y < line_vars.line_end)
 	{
-		tex_y = (int)texture_pos & (tex_data.height - 1);
-		texture_pos += step;
-		pixel = tex[tex_y * tex_data.size_line / (tex_data.bpp / 8) + tex_x];
-		scrn[y * s_buff->size_line / (s_buff->bpp / 8) + ray_v.scrn_x] = pixel;
+		tex.tex_y = (int)tex.texture_pos & (tex_data.height - 1);
+		tex.texture_pos += tex.step;
+		scrn[y * s_buff->size_line / (s_buff->bpp / 8) + ray_v.scrn_x]
+			= tex_addr[tex.tex_y * tex_data.size_line / (tex_data.bpp / 8)
+			+ tex.tex_x];
 	}
 }
 
