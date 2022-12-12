@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_handler.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 16:05:12 by kwang             #+#    #+#             */
+/*   Updated: 2022/12/12 16:05:15 by kwang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static void	handle_mouse_pause(t_mouse *mouse)
 {
-	mouse->m_pause = mouse->m_pause ^ (1 << 1);
+	mouse->m_pause = mouse->m_pause ^ 1;
 	if (mouse->m_pause == 1)
 		mlx_mouse_show();
 	else if (mouse->m_pause == 0)
