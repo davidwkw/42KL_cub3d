@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:20 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:16:21 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:33:44 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_data	*get_minimap_asset(t_cache *cache, char c)
 	if (c == '1')
 		return (&cache->minimap_obs);
 	else
-		return NULL;
+		return (NULL);
 }
 
 /*
@@ -34,15 +34,15 @@ Returns nothing
 void	cache_minimap_assets(void *mlx, t_cache *cache)
 {
 	create_image(mlx, &cache->minimap_obs,
-				MINIMAP_OBS_SIZE, MINIMAP_OBS_SIZE);
+		MINIMAP_OBS_SIZE, MINIMAP_OBS_SIZE);
 	fill_image_with_color((int *)cache->minimap_obs.addr,
-						cache->minimap_obs.width*cache->minimap_obs.height,
-						WHITE);
+		cache->minimap_obs.width * cache->minimap_obs.height,
+		WHITE);
 	create_image(mlx, &cache->minimap_player,
-				MINIMAP_PLYR_SIZE, MINIMAP_PLYR_SIZE);
+		MINIMAP_PLYR_SIZE, MINIMAP_PLYR_SIZE);
 	fill_image_with_color((int *)cache->minimap_player.addr,
-						cache->minimap_player.width*cache->minimap_player.height,
-						GREEN);
+		cache->minimap_player.width * cache->minimap_player.height,
+		GREEN);
 }
 
 /*
@@ -62,13 +62,13 @@ void	cache_minimap(t_map map, void *mlx, t_cache *cache)
 {
 	int		x;
 	int		y;
-	t_data *asset;
+	t_data	*asset;
 
 	create_image(mlx, &cache->minimap,
-				map.width*MINIMAP_GRID_SIZE, map.height*MINIMAP_GRID_SIZE);
+		map.width * MINIMAP_GRID_SIZE, map.height * MINIMAP_GRID_SIZE);
 	fill_image_with_color((int *)cache->minimap.addr,
-						cache->minimap.width*cache->minimap.height,
-						T70_BLUE);
+		cache->minimap.width * cache->minimap.height,
+		T70_BLUE);
 	y = 0;
 	while (map.map[y] != NULL)
 	{
@@ -77,7 +77,7 @@ void	cache_minimap(t_map map, void *mlx, t_cache *cache)
 		{
 			asset = get_minimap_asset(cache, map.map[y][x]);
 			copy_img(&cache->minimap, asset,
-					x*MINIMAP_GRID_SIZE, y*MINIMAP_GRID_SIZE);	
+				x * MINIMAP_GRID_SIZE, y * MINIMAP_GRID_SIZE);
 			++x;
 		}
 		++y;

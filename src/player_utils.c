@@ -6,39 +6,39 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:01 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:16:03 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:22:50 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 // to refactor so that it takes into account player vector x/y rather than char.
-static void set_camera_plane(char dir, t_vector *cam_vect, double fov)
+static void	set_camera_plane(char dir, t_vector *cam_vect, double fov)
 {
 	fov /= 2;
 	if (dir == 'E')
 	{	
 		cam_vect->x = 0;
-		cam_vect->y = tan(fov/180.0*M_PI);
+		cam_vect->y = tan(fov / 180.0 * M_PI);
 	}
 	else if (dir == 'N')
 	{
-		cam_vect->x = tan(fov/180.0*M_PI);
+		cam_vect->x = tan(fov / 180.0 * M_PI);
 		cam_vect->y = 0;
 	}
 	else if (dir == 'W')
 	{
 		cam_vect->x = 0;
-		cam_vect->y = -tan(fov/180.0*M_PI);
+		cam_vect->y = -tan(fov / 180.0 * M_PI);
 	}
 	else if (dir == 'S')
 	{
-		cam_vect->x = -tan(fov/180.0*M_PI);
+		cam_vect->x = -tan(fov / 180.0 * M_PI);
 		cam_vect->y = 0;
 	}
 }
 
-static void set_player_dir_vect(char dir, t_vector *p_vector)
+static void	set_player_dir_vect(char dir, t_vector *p_vector)
 {
 	if (dir == 'E')
 	{	
@@ -79,7 +79,7 @@ void	init_player_var(t_player *player, char orientation, int x, int y)
 {
 	player->px = x + 0.5;
 	player->py = y + 0.5;
-	set_player_dir_vect(orientation, &player->dir_vect);
+	set_player_dir_vect(orientation, &player->dir_v);
 	set_camera_plane(orientation, &player->cam_vect, FOV);
 }
 
@@ -101,7 +101,7 @@ void	handle_player_movement(int key, t_player *p, t_map map)
 		if (key == 'w' || key == 13)
 			handle_forw_back(p, map, FORWARD);
 		else if (key == 's' || key == 1)
-			handle_forw_back(p, map, BACKWARD);
+			handle_forw_back(p, map, B A CKWARD);
 	}
 	if (ft_strchr("ad", key) != 0 || key == 2 || key == 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:11:41 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/06 18:38:57 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:35:28 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	create_image(void *mlx, t_data *img, int width, int height)
 	img->img = mlx_new_image(mlx, width, height);
 	img->width = width;
 	img->height = height;
-    img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->size_line, &img->endian);
+	img->addr = mlx_get_data_addr(img->img, &img->bpp,
+			&img->size_line, &img->endian);
 }
 
 /*
@@ -119,7 +120,7 @@ void	copy_img(t_data *dst, t_data *src, int x, int y)
 		while (w < src->width && (x + w) < dst->width)
 		{
 			temp_dst[((y + h) * (dst->size_line / (dst->bpp / 8))) + (x + w)]
-					= temp_src[(h * (src->size_line / (src->bpp / 8))) + w];
+				= temp_src[(h * (src->size_line / (src->bpp / 8))) + w];
 			++w;
 		}
 		++h;

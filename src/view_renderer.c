@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:07:29 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 15:12:33 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:22:50 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	render_view(t_cache tex_cache, t_player p,
 	while (ray_vars.scrn_x < WIN_WIDTH)
 	{
 		cam_plane_pos_x = 2 * ray_vars.scrn_x / (double)WIN_WIDTH - 1;
-		ray_vars.ray_dir = add_vectors(p.dir_vect,
+		ray_vars.ray_dir = add_vectors(p.dir_v,
 				multiply_vector(p.cam_vect, cam_plane_pos_x));
 		ray_vars.map_x = (int)p.px;
 		ray_vars.map_y = (int)p.py;

@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:30:41 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:16:55 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:35:48 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	validate_texture_path(const char *config_str)
 {
 	int	fd;
 
-	// validate_ext(config_str, "xpm");
+	validate_ext(config_str, "xpm");
 	fd = open(config_str, O_RDONLY);
 	if (fd == -1 || errno != 0)
 		error_handler("Failure to open specified path / invalid path",

@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:15:59 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:16:00 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:19:47 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	calc_delta(t_ray_vars *ray_vars)
 	if (ray_vars->ray_dir.x == 0)
 		ray_vars->delta_x = 1e30;
 	else
-		ray_vars->delta_x = absolute_double(1/ray_vars->ray_dir.x);
+		ray_vars->delta_x = absolute_double(1 / ray_vars->ray_dir.x);
 	if (ray_vars->ray_dir.y == 0)
 		ray_vars->delta_y = 1e30;
 	else
-		ray_vars->delta_y = absolute_double(1/ray_vars->ray_dir.y);
+		ray_vars->delta_y = absolute_double(1 / ray_vars->ray_dir.y);
 }
 
 void	calc_side_dist(t_ray_vars *ray_vars, t_player p)

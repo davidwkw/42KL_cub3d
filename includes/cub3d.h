@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:58:02 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 15:34:01 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:22:50 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ typedef struct s_player
 {
 	double		px;
 	double		py;
-	t_vector	dir_vect;
+	t_vector	dir_v;
 	t_vector	cam_vect;
 }	t_player;
 

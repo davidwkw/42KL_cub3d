@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:40:08 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:16:09 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:26:37 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	init_player_mlx(t_player *player, char **map)
 		x = 0;
 		while (map[y][x] != '\0')
 		{
-			if (ft_strchr("NSEW" , map[y][x]) != NULL)
+			if (ft_strchr("NSEW", map[y][x]) != NULL)
 			{
 				init_player_var(player, map[y][x], x, y);
 				return ;
@@ -105,9 +105,9 @@ void	init_player_mlx(t_player *player, char **map)
 void	init_bg_mlx(t_colours colours, t_data *bg)
 {
 	fill_image_with_color((int *)bg->addr,
-						bg->width*bg->height/2, 
-						colours.bg.ceiling);
-	fill_image_with_color((int *)bg->addr+(bg->width*bg->height/2),
-						bg->width*bg->height/2, 
-						colours.bg.floor);
+		bg->width * bg->height / 2,
+		colours.bg.ceiling);
+	fill_image_with_color((int *)bg->addr + (bg->width * bg->height / 2),
+		bg->width * bg->height / 2,
+		colours.bg.floor);
 }

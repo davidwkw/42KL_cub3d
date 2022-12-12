@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:22 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:16:26 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:33:59 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ static int	check_plyr_oob(char **map, int i, int j)
 	int	row_limit;
 
 	row_limit = ft_2darrlen(map);
-	if (j <= 0 || i <= 0 || i == row_limit - 1 || j == (int)ft_strlen(map[i]) - 1)
+	if (j <= 0 || i <= 0 || i == row_limit - 1
+		|| j == (int)ft_strlen(map[i]) - 1)
 		return (false);
 	return (!(map[i - 1][j - 1] == ' '
 		|| map[i - 0][j - 1] == ' '

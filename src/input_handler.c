@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:05:12 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:11:28 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:34:25 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	handle_mouse(t_vars *vars, t_mouse *mouse)
 		handle_rotation(&vars->player, m_diff * M_SENSITIVITY);
 	else if (dir < -M_MOVE_THRESHOLD)
 		handle_rotation(&vars->player, -(m_diff * M_SENSITIVITY));
-	mlx_mouse_move(vars->win, WIN_WIDTH/2, WIN_HEIGHT/2);
+	mlx_mouse_move(vars->win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	mlx_mouse_get_pos(vars->win, &vars->mouse.old_pos_x, &vars->mouse.y);
 	prev = tv;
 }
