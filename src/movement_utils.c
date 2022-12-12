@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:04 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:24:01 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:58:26 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 void	handle_forw_back(t_player *p, t_map map, int dir)
 {
+	int move_speed;
+
+	move_speed = 1 / GRID_SIZE * MOVE_MULTIPLE;
 	if (dir == FORWARD)
 	{
-		if (map.map[(int)(p->py + p->dir_v.y * MOVE_SPEED)][(int)p->px] != '1')
-			p->py += p->dir_v.y * MOVE_SPEED;
-		if (map.map[(int)p->py][(int)(p->px + p->dir_v.x * MOVE_SPEED)] != '1')
-			p->px += p->dir_v.x * MOVE_SPEED;
+		if (map.map[(int)(p->py + p->dir_v.y * move_speed)][(int)p->px] != '1')
+			p->py += p->dir_v.y * move_speed;
+		if (map.map[(int)p->py][(int)(p->px + p->dir_v.x * move_speed)] != '1')
+			p->px += p->dir_v.x * move_speed;
 	}
 	else if (dir == BACKWARD)
 	{
-		if (map.map[(int)(p->py - p->dir_v.y * MOVE_SPEED)][(int)p->px] != '1')
-			p->py -= p->dir_v.y * MOVE_SPEED;
-		if (map.map[(int)p->py][(int)(p->px - p->dir_v.x * MOVE_SPEED)] != '1')
-			p->px -= p->dir_v.x * MOVE_SPEED;
+		if (map.map[(int)(p->py - p->dir_v.y * move_speed)][(int)p->px] != '1')
+			p->py -= p->dir_v.y * move_speed;
+		if (map.map[(int)p->py][(int)(p->px - p->dir_v.x * move_speed)] != '1')
+			p->px -= p->dir_v.x * move_speed;
 	}
 }
 

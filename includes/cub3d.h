@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:58:02 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:42:40 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 16:58:21 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@
 # define TRANSPARENT 0xFF000000
 # define T70_BLUE 0xB30000FF
 
-# define RAD M_PI/180
-# define MOVE_SPEED 1/GRID_SIZE*5
-# define ROT_SPEED RAD*2
+# define RAD 0.0174532925
+# define MOVE_MULTIPLE 5
 # define FOV 66.0
 # define M_MOVE_THRESHOLD 0
 # define M_POLL_RATE 1000
@@ -151,7 +150,7 @@ typedef struct s_player
 	t_vector	cam_vect;
 }	t_player;
 
-typedef	struct s_ray_vars
+typedef struct s_ray_vars
 {
 	t_vector	ray_dir;
 	double		delta_x;
@@ -238,7 +237,7 @@ int			exit_program_mlx(t_vars *mlx);
 
 // mlx_initializer.c
 void		init_config_textures_mlx(void *p_mlx, t_cache *texture_cache,
-									char *textures[], size_t size);
+				char *textures[], size_t size);
 void		init_colours_mlx(t_colours *colours_cache,
 				char *colours[], size_t size);
 void		init_player_mlx(t_player *player, char **map);
@@ -264,7 +263,7 @@ t_vector	multiply_vector(t_vector vect, double multiple);
 
 // view_renderer.c
 void		render_view(t_cache tex_cache, t_player p,
-			char **map, t_data *scrn_buff);
+				char **map, t_data *scrn_buff);
 
 // raycasting_utils.c
 void		perform_dda(t_ray_vars *ray_vars, char **map);
