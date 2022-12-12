@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 23:39:43 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 23:55:39 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,4 @@ void	handle_mlx(t_config *config)
 
 // replace in linux version
 // mlx_mouse_move(vars.mlx, vars.win, WIN_WIDTH/2, WIN_HEIGHT/2);
-// mlx_mouse_get_pos(vars.mlx, vars.win, &vars.mouse.old_pos_x, &vars.mouse.y);
 // mlx_mouse_get_pos(vars.mlx, vars.win, &vars.mouse.old_pos_x, &vars.mouse.y);
