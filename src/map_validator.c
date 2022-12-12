@@ -1,7 +1,5 @@
 #include "cub3d.h"
 
-
-
 /*
 Parameters:
 map - The padded 2D array of the map

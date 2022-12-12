@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   view_renderer.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 15:07:29 by kwang             #+#    #+#             */
+/*   Updated: 2022/12/12 15:12:33 by kwang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 t_line_vars	calc_line_vals(t_ray_vars ray_vars)
@@ -12,7 +24,7 @@ t_line_vars	calc_line_vals(t_ray_vars ray_vars)
 	line_vars.line_end = line_vars.line_height / 2 + WIN_HEIGHT / 2;
 	if (line_vars.line_end >= WIN_HEIGHT)
 		line_vars.line_end = WIN_HEIGHT - 1;
-	return line_vars;
+	return (line_vars);
 }
 
 int	calc_texture_x(t_ray_vars ray_vars, t_player p, int tex_width)
@@ -29,12 +41,12 @@ int	calc_texture_x(t_ray_vars ray_vars, t_player p, int tex_width)
 	if (ray_vars.side == 0 && ray_vars.ray_dir.x > 0)
 		tex_x = tex_width - tex_x - 1;
 	if (ray_vars.side == 1 && ray_vars.ray_dir.y < 0)
-		tex_x = tex_width - tex_x - 1;		
-	return tex_x;
+		tex_x = tex_width - tex_x - 1;
+	return (tex_x);
 }
 
-void draw_textured_line(t_ray_vars ray_vars, t_player p,
-						t_data tex_data, t_data *scrn_buff)
+void	draw_textured_line(t_ray_vars ray_v, t_player p,
+						t_data tex_data, t_data *s_buff)
 {
 	t_line_vars	line_vars;
 	int			tex_x;
@@ -46,21 +58,20 @@ void draw_textured_line(t_ray_vars ray_vars, t_player p,
 	int			*scrn;
 	int			*tex;
 
-	scrn = (int *)scrn_buff->addr;
-	tex = (int *)tex_data.addr; 
-	line_vars = calc_line_vals(ray_vars);
-	tex_x = calc_texture_x(ray_vars, p, tex_data.width);
+	scrn = (int *)s_buff->addr;
+	tex = (int *)tex_data.addr;
+	line_vars = calc_line_vals(ray_v);
+	tex_x = calc_texture_x(ray_v, p, tex_data.width);
 	step = 1.0 * tex_data.height / line_vars.line_height;
 	texture_pos = (line_vars.line_start
-				- WIN_HEIGHT / 2 + line_vars.line_height / 2) * step;
-	y = line_vars.line_start;
-	while (y < line_vars.line_end)
+			- WIN_HEIGHT / 2 + line_vars.line_height / 2) * step;
+	y = line_vars.line_start - 1;
+	while (++y < line_vars.line_end)
 	{
 		tex_y = (int)texture_pos & (tex_data.height - 1);
 		texture_pos += step;
 		pixel = tex[tex_y * tex_data.size_line / (tex_data.bpp / 8) + tex_x];
-		scrn[y * scrn_buff->size_line / (scrn_buff->bpp / 8) + ray_vars.scrn_x] = pixel;
-		++y;
+		scrn[y * s_buff->size_line / (s_buff->bpp / 8) + ray_v.scrn_x] = pixel;
 	}
 }
 
@@ -77,7 +88,7 @@ void	render_view(t_cache tex_cache, t_player p,
 	{
 		cam_plane_pos_x = 2 * ray_vars.scrn_x / (double)WIN_WIDTH - 1;
 		ray_vars.ray_dir = add_vectors(p.dir_vect,
-							multiply_vector(p.cam_vect, cam_plane_pos_x));
+				multiply_vector(p.cam_vect, cam_plane_pos_x));
 		ray_vars.map_x = (int)p.px;
 		ray_vars.map_y = (int)p.py;
 		calc_delta(&ray_vars);

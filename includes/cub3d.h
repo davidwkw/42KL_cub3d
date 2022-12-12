@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:58:02 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/11 21:14:23 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 15:34:01 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,9 +176,10 @@ typedef struct s_line_vars
 
 typedef struct s_mouse
 {
-	int	x;
-	int	y;
-	int	old_pos_x;
+	int		m_pause;
+	int		x;
+	int		y;
+	int		old_pos_x;
 }	t_mouse;
 
 typedef struct s_vars
@@ -190,7 +191,7 @@ typedef struct s_vars
 	t_player	player;
 	t_map		map;
 	t_data		scrn_buff;
-	t_mouse		m_pos;
+	t_mouse		mouse;
 }	t_vars;
 
 // error_handler.c

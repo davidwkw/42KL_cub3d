@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/11 21:17:33 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 15:30:36 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ static void	render_screen(t_vars *vars)
 
 static int loop_game(t_vars *vars)
 {
-	handle_mouse(vars, &vars->m_pos);
+	// if ()
+	{
+		handle_mouse(vars, &vars->mouse);
+	}
 	render_screen(vars);
 	return (EXIT_SUCCESS);
 }
@@ -72,7 +75,7 @@ void	handle_mlx(t_config *config)
 {
 	t_vars	vars;
 
-	vars = (t_vars){.m_pos = (t_mouse){.old_pos_x = WIN_WIDTH/2}};
+	vars = (t_vars){.mouse = (t_mouse){.old_pos_x = WIN_WIDTH/2}};
 	vars.mlx = mlx_init();
 	vars.map = config->map;
 	if (!vars.mlx)
@@ -89,12 +92,12 @@ void	handle_mlx(t_config *config)
 	mlx_do_key_autorepeaton(vars.mlx);
 	mlx_mouse_hide();
 	mlx_mouse_move(vars.win, WIN_WIDTH/2, WIN_HEIGHT/2);
-	mlx_mouse_get_pos(vars.win, &vars.m_pos.old_pos_x, &vars.m_pos.y);
+	mlx_mouse_get_pos(vars.win, &vars.mouse.old_pos_x, &vars.mouse.y);
 	mlx_loop_hook(vars.mlx, loop_game, &vars);
 	mlx_loop(vars.mlx);
 }
 
 // replace in linux version
 // mlx_mouse_move(vars.mlx, vars.win, WIN_WIDTH/2, WIN_HEIGHT/2);
-// mlx_mouse_get_pos(vars.mlx, vars.win, &vars.m_pos.old_pos_x, &vars.m_pos.y);
-// mlx_mouse_get_pos(vars.mlx, vars.win, &vars.m_pos.old_pos_x, &vars.m_pos.y);
+// mlx_mouse_get_pos(vars.mlx, vars.win, &vars.mouse.old_pos_x, &vars.mouse.y);
+// mlx_mouse_get_pos(vars.mlx, vars.win, &vars.mouse.old_pos_x, &vars.mouse.y);

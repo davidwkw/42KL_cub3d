@@ -36,14 +36,14 @@ void	handle_rotation(t_player *p, double rot_speed)
 	double	prev_dir_x;
 	double	prev_plane_x;
 
-		prev_dir_x = p->dir_vect.x;
-		p->dir_vect.x = p->dir_vect.x * cos(rot_speed)
-						- p->dir_vect.y * sin(rot_speed);
-		p->dir_vect.y = prev_dir_x * sin(rot_speed)
-						+ p->dir_vect.y * cos(rot_speed);
-		prev_plane_x = p->cam_vect.x;
-		p->cam_vect.x = p->cam_vect.x * cos(rot_speed)
-						- p->cam_vect.y * sin(rot_speed);
-		p->cam_vect.y = prev_plane_x * sin(rot_speed)
-						+ p->cam_vect.y * cos(rot_speed);
+	prev_dir_x = p->dir_vect.x;
+	p->dir_vect.x = p->dir_vect.x * cos(rot_speed)
+					- p->dir_vect.y * sin(rot_speed);
+	p->dir_vect.y = prev_dir_x * sin(rot_speed)
+					+ p->dir_vect.y * cos(rot_speed);
+	prev_plane_x = p->cam_vect.x;
+	p->cam_vect.x = p->cam_vect.x * cos(rot_speed)
+					- p->cam_vect.y * sin(rot_speed);
+	p->cam_vect.y = prev_plane_x * sin(rot_speed)
+					+ p->cam_vect.y * cos(rot_speed);
 }
