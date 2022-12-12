@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:05:12 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 17:14:52 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 23:16:02 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	handle_mouse(t_vars *vars, t_mouse *mouse)
 	static struct timeval	prev;
 	double					m_sensitivity;
 
-	m_sensitivity = FOV / 180*M_PI / WIN_WIDTH * M_SENSITIVTY_MULTIPLE;
+	m_sensitivity = FOV / 180 * M_PI / WIN_WIDTH * M_SENSITIVTY_MULTIPLE;
 	gettimeofday(&tv, NULL);
 	if (tv.tv_sec == prev.tv_sec
 		&& (tv.tv_usec - prev.tv_usec) < (1000000 / M_POLL_RATE))

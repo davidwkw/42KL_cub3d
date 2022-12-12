@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:58:02 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 17:41:27 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 23:40:04 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@
 
 # define MINIMAP_SCALE 4
 # define MINIMAP_GRID_SCALE 8
-# define MINIMAP_X_OFFSET WIN_WIDTH-(WIN_HEIGHT/MINIMAP_SCALE)
-# define MINIMAP_Y_OFFSET 0
 # define MINIMAP_PLYR_SCALE 16
 
 # define WHITE 0x00FFFFFF
