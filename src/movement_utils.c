@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:04 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:58:26 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 17:09:50 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	handle_forw_back(t_player *p, t_map map, int dir)
 {
-	int move_speed;
+	double	move_speed;
 
-	move_speed = 1 / GRID_SIZE * MOVE_MULTIPLE;
+	move_speed = 1.0 / GRID_SIZE * MOVE_MULTIPLE;
 	if (dir == FORWARD)
 	{
 		if (map.map[(int)(p->py + p->dir_v.y * move_speed)][(int)p->px] != '1')

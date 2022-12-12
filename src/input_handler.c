@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:05:12 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:34:25 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 17:14:52 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ void	handle_mouse(t_vars *vars, t_mouse *mouse)
 	int						dir;
 	struct timeval			tv;
 	static struct timeval	prev;
+	double					m_sensitivity;
 
+	m_sensitivity = FOV / 180*M_PI / WIN_WIDTH * M_SENSITIVTY_MULTIPLE;
 	gettimeofday(&tv, NULL);
 	if (tv.tv_sec == prev.tv_sec
 		&& (tv.tv_usec - prev.tv_usec) < (1000000 / M_POLL_RATE))
@@ -58,9 +60,9 @@ void	handle_mouse(t_vars *vars, t_mouse *mouse)
 	dir = vars->mouse.x - mouse->old_pos_x;
 	m_diff = ft_absolute(dir);
 	if (dir > M_MOVE_THRESHOLD)
-		handle_rotation(&vars->player, m_diff * M_SENSITIVITY);
+		handle_rotation(&vars->player, m_diff * m_sensitivity);
 	else if (dir < -M_MOVE_THRESHOLD)
-		handle_rotation(&vars->player, -(m_diff * M_SENSITIVITY));
+		handle_rotation(&vars->player, -(m_diff * m_sensitivity));
 	mlx_mouse_move(vars->win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	mlx_mouse_get_pos(vars->win, &vars->mouse.old_pos_x, &vars->mouse.y);
 	prev = tv;
