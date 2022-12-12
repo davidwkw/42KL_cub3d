@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:30:09 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 17:37:36 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,24 @@
 
 void	paint_minimap(t_data *minimap_buff, t_cache cache, t_player p)
 {
+	const int	minimap_size = WIN_HEIGHT / MINIMAP_SCALE;
+	const int	minimap_grid_size = minimap_size / MINIMAP_GRID_SCALE;
+	const int	minimap_plyr_size = minimap_size / MINIMAP_PLYR_SCALE;
+
 	copy_img(minimap_buff, &cache.minimap,
-		(MINIMAP_SIZE / 2 - p.px * MINIMAP_GRID_SIZE),
-		(MINIMAP_SIZE / 2 - p.py * MINIMAP_GRID_SIZE));
+		(minimap_size / 2 - p.px * minimap_grid_size),
+		(minimap_size / 2 - p.py * minimap_grid_size));
 	copy_img(minimap_buff, &cache.minimap_player,
-		minimap_buff->width / 2 - MINIMAP_PLYR_SIZE / 2,
-		minimap_buff->height / 2 - MINIMAP_PLYR_SIZE / 2);
+		minimap_buff->width / 2 - minimap_plyr_size / 2,
+		minimap_buff->height / 2 - minimap_plyr_size / 2);
 }
 
 void	render_minimap(t_vars *vars)
 {
-	t_data	minimap_buffer;
+	t_data		minimap_buffer;
+	const int	minimap_size = WIN_HEIGHT / MINIMAP_SCALE;
 
-	create_image(vars->mlx, &minimap_buffer, MINIMAP_SIZE, MINIMAP_SIZE);
+	create_image(vars->mlx, &minimap_buffer, minimap_size, minimap_size);
 	fill_image_with_color((int *)minimap_buffer.addr,
 		minimap_buffer.width * minimap_buffer.height, T70_BLUE);
 	paint_minimap(&minimap_buffer, vars->texture_cache, vars->player);
