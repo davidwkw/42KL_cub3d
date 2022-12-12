@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:58:02 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 17:14:43 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/12 17:15:57 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define T70_BLUE 0xB30000FF
 
 # define RAD 0.0174532925
-# define MOVE_MULTPLE 5.0
+# define MOVE_MULTIPLE 5.0
 # define FOV 66.0
 # define M_MOVE_THRESHOLD 0
 # define M_POLL_RATE 1000
