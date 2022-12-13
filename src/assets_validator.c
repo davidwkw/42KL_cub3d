@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:30:41 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/13 20:06:55 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 20:11:55 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,12 @@ static void	validate_rgb(const char *config_str)
 	{
 		if (is_rgb_value(colours[i]) == false)
 			error_handler("Invalid RGB value", "validate_rgb", EIO);
-		if (ft_strlen(colours[i]) > 3)
-			error_handler("RGB value > 255 or < 0", "validate_rgb", EIO);
 		val = ft_atoi(colours[i]);
-		if (val < 0 || val > 255)
+		if (ft_strlen(colours[i]) > 3 || val < 0 || val > 255)
 			error_handler("RGB value > 255 or < 0", "validate_rgb", EIO);
 		++i;
 	}
+	free(trimmedstr);
 	ft_free2d(colours);
 }
 
