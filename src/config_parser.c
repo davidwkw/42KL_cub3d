@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:57:22 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/13 19:13:15 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 19:36:38 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static void	cache_config(int fd, char ***config_cache)
 	{
 		if (errno)
 			error_handler("Read error", "cache_config", 0);
-		if (is_str_empty(line) == true && ft_lstsize(head) < 7)
+		if (is_str_empty(line) == true && ft_lstsize(head) < 8)
 		{
 			free(line);
 			continue ;

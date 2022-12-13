@@ -6,7 +6,7 @@
 #    By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:03:19 by kwang             #+#    #+#              #
-#    Updated: 2022/12/12 16:06:40 by kwang            ###   ########.fr        #
+#    Updated: 2022/12/13 19:39:05 by kwang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ LIBFT = $(LIBFTDIR)/libft.a
 
 LIBFTFLAGS = -L$(LIBFTDIR) -lft -I$(LIBFTDIR)
 
-NAME = cub3d
+NAME = cub3D
 
 all : $(NAME)
 
@@ -107,6 +107,6 @@ fclean : 		clean
 re : 			fclean all
 
 run	: 			all
-				./cub3d maps/basic_map.cub
+				./cub3D maps/basic_map.cub
 
 .PHONY : all bonus clean fclean re run
