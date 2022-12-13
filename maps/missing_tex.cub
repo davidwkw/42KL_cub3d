@@ -3,7 +3,7 @@ SO ./textures/TECH_3G.xpm
 WE ./textures/TECH_3I.xpm
 
 F 220,100,0
-C 225,30,500
+C 225,30,200
 
 111111111
 1000N0001
