@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 14:10:54 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 23:55:39 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 12:55:38 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	paint_minimap(t_data *minimap_buff, t_cache cache, t_player p)
 {
-	const int	minimap_size = WIN_HEIGHT / MINIMAP_SCALE;
-	const int	minimap_grid_size = minimap_size / MINIMAP_GRID_SCALE;
-	const int	minimap_plyr_size = minimap_size / MINIMAP_PLYR_SCALE;
+	const double	minimap_size = WIN_HEIGHT / MINIMAP_SCALE;
+	const double	minimap_grid_size = minimap_size / MINIMAP_GRID_SCALE;
+	const double	minimap_plyr_size = minimap_size / MINIMAP_PLYR_SCALE;
 
 	copy_img(minimap_buff, &cache.minimap,
 		(minimap_size / 2 - p.px * minimap_grid_size),
@@ -28,10 +28,10 @@ void	paint_minimap(t_data *minimap_buff, t_cache cache, t_player p)
 
 void	render_minimap(t_vars *vars)
 {
-	t_data		minimap_buffer;
-	const int	minimap_size = WIN_HEIGHT / MINIMAP_SCALE;
-	const int	minimap_x_offset = WIN_WIDTH - (WIN_HEIGHT / MINIMAP_SCALE);
-	const int	minimap_y_offset = 0;
+	t_data			minimap_buffer;
+	const double	minimap_size = WIN_HEIGHT / MINIMAP_SCALE;
+	const double	minimap_x_offset = WIN_WIDTH - (WIN_HEIGHT / MINIMAP_SCALE);
+	const double	minimap_y_offset = 0;
 
 	create_image(vars->mlx, &minimap_buffer, minimap_size, minimap_size);
 	fill_image_with_color((int *)minimap_buffer.addr,
