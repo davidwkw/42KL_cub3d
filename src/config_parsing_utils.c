@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:46 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:16:48 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 18:55:36 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	is_str_map(const char *str)
 	int	i;
 
 	i = -1;
+	if (str == NULL)
+		return (false);
 	while (str[++i] != '\0')
 	{
 		if (ft_strchr(" \t\r\n\v01NSWE", str[i]) == NULL)

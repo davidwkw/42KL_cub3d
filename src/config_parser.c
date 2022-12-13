@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:57:22 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:16:45 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 19:00:56 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ static void	set_assets_config(t_assets *assets, const char **config_cache)
 	size_t	i;
 
 	i = 0;
+	if (config_cache == NULL || config_cache[0] == NULL)
+		error_handler("Config non-existent", "set_assets_config", EIO);
 	while (!is_str_map(config_cache[i]) && (i < (TEXTURES_SIZE + COLOURS_SIZE)))
 	{
 		set_config(assets, config_cache[i]);
