@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:22 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:33:59 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 20:46:33 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,8 @@ void	validate_map(char **map_cache)
 	longest = get_longest_line(map_cache);
 	temp_arr = malloc(sizeof(char *) * (ft_2darrlen(map_cache) + 1));
 	temp_arr[ft_2darrlen(map_cache)] = NULL;
+	if (check_empty_lines(map_cache) == 1)
+		error_handler("Empty lines in the map", "validate_map", EIO);
 	fill_space(temp_arr, ft_2darrlen(map_cache), longest);
 	copy_into_temp(temp_arr, map_cache, longest);
 	if (check_duplicates(temp_arr) == 0)

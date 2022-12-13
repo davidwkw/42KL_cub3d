@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:58:02 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/13 18:49:43 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 20:45:25 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,11 +219,13 @@ int			check_assets_set(const t_assets assets);
 int			is_str_empty(const char *str);
 int			is_str_map(const char *str);
 int			is_rgb_value(const char *str);
+int			is_start_of_map(char *str);
 
 // map_validator_utils.c
 void		fill_space(char **temp_arr, int arrlen, int size);
 void		copy_into_temp(char **dst, char **src, int len);
 int			get_longest_line(char **config_cache);
+int			check_empty_lines(char **temp);
 
 // map_validator.c
 void		validate_map(char **map_cache);

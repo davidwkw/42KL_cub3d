@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:46 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/13 18:55:36 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 20:40:09 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,31 @@ int	is_rgb_value(const char *str)
 			return (false);
 	}
 	return (true);
+}
+
+/*
+Parameters:
+str - string to be checked.
+
+Description:
+Iterates through str to check if the values in the string are
+values that would only be valid in the first line of the map.
+
+Return value:
+Returns true if it is not the first line of the map. False otherwise
+*/
+int	is_start_of_map(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str || !ft_strlen(str))
+		return (0);
+	while (str[i] != '\0')
+	{
+		if (!ft_isspace(str[i]) && str[i] != '1')
+			return (0);
+		i++;
+	}
+	return (1);
 }

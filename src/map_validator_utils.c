@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:27 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:16:29 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 20:45:11 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,18 @@ int	get_longest_line(char **config_cache)
 		i++;
 	}
 	return (max);
+}
+
+int	check_empty_lines(char **temp)
+{
+	int	i;
+
+	i = 0;
+	while (temp[i] != NULL)
+	{
+		if (is_str_empty(temp[i]))
+			return (true);
+		i++;
+	}
+	return (false);
 }

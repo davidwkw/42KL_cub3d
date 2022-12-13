@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:57:22 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/13 19:36:38 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 20:40:55 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,15 @@ static void	cache_config(int fd, char ***config_cache)
 	char	*line;
 	t_list	*head;
 	t_list	*lst;
+	int		map_reached;
 
 	head = NULL;
+	map_reached = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
-		if (errno)
-			error_handler("Read error", "cache_config", 0);
-		if (is_str_empty(line) == true && ft_lstsize(head) < 8)
+		if (is_start_of_map(line) == 1 && map_reached == 0)
+			map_reached = 1;
+		if (is_str_empty(line) == true && map_reached == 0)
 		{
 			free(line);
 			continue ;
