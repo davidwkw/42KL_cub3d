@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:20 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/13 12:55:13 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 12:58:43 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ Returns nothing
 */
 void	cache_minimap_assets(void *mlx, t_cache *cache)
 {
-	const int	minimap_size = WIN_HEIGHT / MINIMAP_SCALE;
-	const int	minimap_obs_size = minimap_size / MINIMAP_GRID_SCALE;
-	const int	minimap_plyr_size = minimap_size / MINIMAP_PLYR_SCALE;
+	const double	minimap_size = WIN_HEIGHT / MINIMAP_SCALE;
+	const double	minimap_obs_size = minimap_size / MINIMAP_GRID_SCALE;
+	const double	minimap_plyr_size = minimap_size / MINIMAP_PLYR_SCALE;
 
 	create_image(mlx, &cache->minimap_obs,
 		minimap_obs_size, minimap_obs_size);
