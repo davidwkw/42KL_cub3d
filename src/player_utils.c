@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:01 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:47:59 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 18:45:06 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,12 @@ void	handle_player_movement(int key, t_player *p, t_map map)
 		else if (key == 'd' || key == 2)
 			handle_left_right(p, map, RIGHT);
 	}
+}
+
+void	handle_arrow_rotate(int key, t_player *p)
+{
+	if (key == 123 || key == 65361)
+		handle_rotation(p, -RAD);
+	else if (key == 124 || key == 65363)
+		handle_rotation(p, RAD);
 }
