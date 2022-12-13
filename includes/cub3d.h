@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:58:02 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/13 18:43:48 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/13 18:46:25 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@
 # define RAD 0.0174532925
 # define MOVE_MULTIPLE 5.0
 # define FOV 66.0
+
+# define ARROW_ROT_MULTIPLE 2.0;
+
 # define M_MOVE_THRESHOLD 0
 # define M_POLL_RATE 1000
 # define M_SENSITIVTY_MULTIPLE 2.0
