@@ -1,13 +1,13 @@
 NO ./textures/TECH_3D.xpm
 SO ./textures/TECH_3G.xpm
-WE ./textures/TECH_3I.xpm
-EA ./textures/TECH_4F.xpm
+WE ./textures/TECH_3I.jpg
+EA ./textures/TECH_4F.png
 
 F 220,100,0
 C 225,30,0
 
 111111111
 1000N0001
-100WSE001
+100000001
 100000001
 111111111
