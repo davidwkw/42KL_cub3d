@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:57:22 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 14:24:32 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 15:12:49 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ static void	set_config(t_assets *assets, const char *str)
 	i = -1;
 	while (++i < TEXTURES_SIZE + COLOURS_SIZE)
 	{
-		if (i < 4 && !ft_strcmp(split[0], asset_code[i]))
+		if (i < 4 && ft_strcmp(split[0], asset_code[i]) == 0)
 		{
 			if (assets->textures[i] != NULL)
 				error_handler("Duplicate asset value", "set_config", EIO);
 			assets->textures[i] = ft_strdup(split[1]);
 		}
-		if (i > 3 && !ft_strcmp(split[0], asset_code[i] - 4))
+		else if (i > 3 && ft_strcmp(split[0], asset_code[i]) == 0)
 		{
 			if (assets->colours[i - 4] != NULL)
 				error_handler("Duplicate asset value", "set_config", EIO);
@@ -56,13 +56,13 @@ static void	set_config(t_assets *assets, const char *str)
 	}
 	// while (++i < TEXTURES_SIZE)
 	// {
-	// 	if (!ft_strcmp(split[0], textures[i]))
+	// 	if (ft_strcmp(split[0], textures[i]) == 0)
 	// 		assets->textures[i] = ft_strdup(split[1]);
 	// }
 	// i = -1;
 	// while (++i < COLOURS_SIZE)
 	// {
-	// 	if (!ft_strcmp(split[0], colours[i]))
+	// 	if (ft_strcmp(split[0], colours[i]) == 0)
 	// 		assets->colours[i] = ft_strdup(split[1]);
 	// }
 	ft_free2d(split);
