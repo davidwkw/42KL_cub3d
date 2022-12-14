@@ -6,7 +6,8 @@
 		"cmath": "c",
 		"time.h": "c",
 		"fcntl.h": "c",
-		"*.tcc": "c"
+		"*.tcc": "c",
+		"cstdlib": "c"
 	},
 	"C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
 }
