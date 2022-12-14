@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:27 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 16:37:14 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 16:39:06 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,15 @@ int	get_longest_line(char **config_cache)
 
 /*
 Parameters:
-str - string to be checked.
+temp - The 2D char array that contains the map from the config file
 
 Description:
-Iterates through str to check if the values in the string are
-values that would only be valid in the first line of the map.
+This function will read through the 2D char array and detects if there
+are empty lines in the array of char* that represents the map.
 
 Return value:
-Returns true if it is not the first line of the map. False otherwise
+Will return true if it found an empty line in.
+Returns false otherwise.
 */
 int	check_empty_lines(char **temp)
 {
