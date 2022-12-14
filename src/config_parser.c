@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:57:22 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 15:12:49 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 15:14:22 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ Returns nothing. Throws errors configuration is invalid.
 static void	set_config(t_assets *assets, const char *str)
 {
 	char		**split;
-	// const char	*textures[4] = {"NO", "SO", "EA", "WE"};
-	// const char	*colours[2] = {"F", "C"};
 	const char	*asset_code[6] = {"NO", "SO", "EA", "WE", "F", "C"};
 	size_t		i;
 
@@ -54,17 +52,6 @@ static void	set_config(t_assets *assets, const char *str)
 			assets->colours[i - 4] = ft_strdup(split[1]);
 		}	
 	}
-	// while (++i < TEXTURES_SIZE)
-	// {
-	// 	if (ft_strcmp(split[0], textures[i]) == 0)
-	// 		assets->textures[i] = ft_strdup(split[1]);
-	// }
-	// i = -1;
-	// while (++i < COLOURS_SIZE)
-	// {
-	// 	if (ft_strcmp(split[0], colours[i]) == 0)
-	// 		assets->colours[i] = ft_strdup(split[1]);
-	// }
 	ft_free2d(split);
 }
 
