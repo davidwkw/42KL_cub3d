@@ -6,11 +6,11 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:05:12 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 14:16:38 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 14:24:54 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 static void	handle_mouse_pause(t_mouse *mouse)
 {

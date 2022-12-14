@@ -6,7 +6,7 @@
 #    By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:03:19 by kwang             #+#    #+#              #
-#    Updated: 2022/12/13 21:45:41 by kwang            ###   ########.fr        #
+#    Updated: 2022/12/14 14:26:58 by kwang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,7 @@ $(LIBFT) :
 $(MLX) :
 				@make -C $(MLXDIR)
 
-$(NAME):		$(OBJS) $(INCLUDES)/$(NAME).h $(LIBFT) $(MLX)
+$(NAME):		$(OBJS) $(INCLUDES)/cub3d.h $(LIBFT) $(MLX)
 				@echo "Creating $(NAME).."
 				@echo "Your display variable is $$DISPLAY"
 				@git submodule init

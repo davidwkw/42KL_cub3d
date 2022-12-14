@@ -6,11 +6,11 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:04 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 12:44:30 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 14:26:27 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 void	handle_forw_back(t_player *p, t_map map, int dir)
 {

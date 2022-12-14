@@ -6,11 +6,11 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:20 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 12:44:30 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 14:25:12 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 static t_data	*get_minimap_asset(t_cache *cache, char c)
 {

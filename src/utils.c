@@ -6,11 +6,11 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:15:56 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 12:44:30 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 14:26:37 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 double	absolute_double(double val)
 {
