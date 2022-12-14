@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:57:22 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 16:06:53 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 20:42:17 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ static void	set_config(t_assets *assets, const char *str)
 		}
 		else if (i > 3 && ft_strcmp(split[0], asset_code[i]) == 0)
 		{
-			if (assets->colours[i - 4] != NULL)
+			if (assets->colours[i - TEXTURES_SIZE] != NULL)
 				error_handler("Duplicate asset value", "set_config", EIO);
-			assets->colours[i - 4] = ft_strdup(split[1]);
+			assets->colours[i - TEXTURES_SIZE] = ft_strdup(split[1]);
 		}	
 	}
 	ft_free2d(split);
