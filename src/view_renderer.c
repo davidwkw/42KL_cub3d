@@ -6,11 +6,11 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:07:29 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:48:47 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 12:44:30 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 t_line_vars	calc_line_vals(t_ray_vars ray_vars)
 {

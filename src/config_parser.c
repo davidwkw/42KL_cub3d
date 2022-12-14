@@ -6,11 +6,11 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:57:22 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/13 20:40:55 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 14:15:27 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 /*
 Parameters:
@@ -30,27 +30,41 @@ Returns nothing. Throws errors configuration is invalid.
 static void	set_config(t_assets *assets, const char *str)
 {
 	char		**split;
-	const char	*textures[4] = {"NO", "SO", "EA", "WE"};
-	const char	*colours[2] = {"F", "C"};
+	// const char	*textures[4] = {"NO", "SO", "EA", "WE"};
+	// const char	*colours[2] = {"F", "C"};
+	const char	*asset_code[6] = {"NO", "SO", "EA", "WE", "F", "C"};
 	size_t		i;
 
 	split = ft_split(str, ' ');
 	if (ft_2darrlen(split) != 2)
 		error_handler("Wrong configuration given", "set_config", EIO);
-	i = 0;
-	while (i < TEXTURES_SIZE)
+	i = -1;
+	while (++i < TEXTURES_SIZE + COLOURS_SIZE)
 	{
-		if (!ft_strcmp(split[0], textures[i]))
+		if (i < 4 && !ft_strcmp(split[0], asset_code[i]))
+		{
+			if (assets->textures[i] != NULL)
+				error_handler("Duplicate asset value", "set_config", EIO);
 			assets->textures[i] = ft_strdup(split[1]);
-		++i;
+		}
+		if (i > 3 && !ft_strcmp(split[0], asset_code[i] - 4))
+		{
+			if (assets->colours[i - 4] != NULL)
+				error_handler("Duplicate asset value", "set_config", EIO);
+			assets->colours[i - 4] = ft_strdup(split[1]);
+		}	
 	}
-	i = 0;
-	while (i < COLOURS_SIZE)
-	{
-		if (!ft_strcmp(split[0], colours[i]))
-			assets->colours[i] = ft_strdup(split[1]);
-		++i;
-	}
+	// while (++i < TEXTURES_SIZE)
+	// {
+	// 	if (!ft_strcmp(split[0], textures[i]))
+	// 		assets->textures[i] = ft_strdup(split[1]);
+	// }
+	// i = -1;
+	// while (++i < COLOURS_SIZE)
+	// {
+	// 	if (!ft_strcmp(split[0], colours[i]))
+	// 		assets->colours[i] = ft_strdup(split[1]);
+	// }
 	ft_free2d(split);
 }
 
@@ -63,7 +77,7 @@ config_cache - Value of a nested array that was populated with content from
 
 Description:
 Reads from cached configuration file and populates t_texture data structure
-with strings required from image and color caching. No validation is done during
+with strings required for image and color caching. No validation is done during
 function call.
 
 Return value:

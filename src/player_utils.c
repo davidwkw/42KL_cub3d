@@ -6,11 +6,11 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:01 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/13 18:48:14 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 12:44:30 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 // to refactor so that it takes into account player vector x/y rather than char.
 static void	set_camera_plane(char dir, t_vector *cam_vect, double fov)

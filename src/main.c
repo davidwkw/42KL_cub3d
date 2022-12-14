@@ -6,11 +6,11 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:30:08 by kwang             #+#    #+#             */
-/*   Updated: 2022/10/05 22:12:47 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 12:44:30 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 int	main(int argc, char **argv)
 {

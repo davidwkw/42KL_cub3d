@@ -6,11 +6,11 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:15:59 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/12 16:19:47 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 12:44:30 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 void	calc_delta(t_ray_vars *ray_vars)
 {
