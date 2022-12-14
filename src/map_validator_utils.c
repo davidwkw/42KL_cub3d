@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:27 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 14:25:02 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 15:17:23 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,15 +92,36 @@ int	get_longest_line(char **config_cache)
 	return (max);
 }
 
+/*
+Parameters:
+temp - The 2D char array that contains the map from the config file
+
+Description:
+This function will read through the 2D char array and detects if there
+are empty lines in BETWEEN the lines of the map. It will allow trailing
+empty lines.
+
+Return value:
+Will return true if it found empty line(s) in between the map lines.
+Returns false otherwise.
+*/
 int	check_empty_lines(char **temp)
 {
 	int	i;
+    int	found_empty_line;
 
+	found_empty_line = 0;
 	i = 0;
 	while (temp[i] != NULL)
 	{
-		if (is_str_empty(temp[i]))
+		if (is_str_empty(temp[i]) && found_empty_line == 0)
+		{
+			found_empty_line = 1;
+		}
+		else if (found_empty_line == 1 && !is_str_empty(temp[i]))
+		{
 			return (true);
+		}
 		i++;
 	}
 	return (false);
