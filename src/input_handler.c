@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:05:12 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 16:52:23 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 21:09:47 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	handle_keys(int key, t_vars *vars)
 		handle_player_movement(key, &vars->player, vars->map);
 	if (key == 'p' || key == 35)
 		handle_mouse_pause(&vars->mouse);
-	if (key == 123 || key == 124 || key == 65361 || key == 65363 )
+	if (key == 123 || key == 124 || key == 65361 || key == 65363)
 		handle_arrow_rotate(key, &vars->player);
 	if (key == 65307 || key == 53)
 	{

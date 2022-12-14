@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:58:02 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 12:44:30 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/14 21:10:15 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,7 +258,6 @@ void		cache_minimap(t_map map, void *mlx, t_cache *cache);
 void		init_player_var(t_player *player, char orientation, int x, int y);
 void		handle_player_movement(int key, t_player *player, t_map map);
 void		handle_arrow_rotate(int key, t_player *p);
-
 
 // vect_utils.c
 t_vector	add_vectors(t_vector a, t_vector b);
