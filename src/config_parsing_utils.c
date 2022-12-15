@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:16:46 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 14:24:36 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/15 16:15:06 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,23 @@ int	is_start_of_map(char *str)
 			return (0);
 		i++;
 	}
+	return (1);
+}
+
+int	check_extra_commas(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ',')
+			count++;
+		i++;
+	}
+	if (count != 2)
+		return (0);
 	return (1);
 }

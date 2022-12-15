@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:58:02 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 21:10:15 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/15 16:19:49 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,7 @@ int			is_str_empty(const char *str);
 int			is_str_map(const char *str);
 int			is_rgb_value(const char *str);
 int			is_start_of_map(char *str);
+int			check_extra_commas(char *str);
 
 // map_validator_utils.c
 void		fill_space(char **temp_arr, int arrlen, int size);

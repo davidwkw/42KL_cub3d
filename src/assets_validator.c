@@ -6,7 +6,7 @@
 /*   By: kwang <kwang@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:30:41 by kwang             #+#    #+#             */
-/*   Updated: 2022/12/14 14:24:18 by kwang            ###   ########.fr       */
+/*   Updated: 2022/12/15 16:17:59 by kwang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ static void	validate_rgb(const char *config_str)
 	trimmedstr = ft_strtrim(config_str, ",");
 	if (ft_strcmp(config_str, trimmedstr) != 0)
 		error_handler("RGB value has trailing commas", "validate_rgb", EIO);
+	if (!check_extra_commas(trimmedstr))
+		error_handler("Invalid comma amount between RGB", "validate_rgb", EIO);
 	colours = ft_split(config_str, ',');
 	if (ft_2darrlen(colours) != 3)
 		error_handler("Invalid number of RGB values", "validate_rgb", EIO);
